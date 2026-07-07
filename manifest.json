@@ -1,11 +1,11 @@
 {
-    "name": "krunal_portfolio",
-    "short_name": "krunal_portfolio",
+    "name": "Krunal Maisuriya Portfolio",
+    "short_name": "Krunal",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "iOS and Flutter Developer Portfolio",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
