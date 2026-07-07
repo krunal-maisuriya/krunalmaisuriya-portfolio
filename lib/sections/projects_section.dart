@@ -3,29 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
 import 'package:krunal_portfolio/core/widgets/section_title_view.dart';
+import 'package:krunal_portfolio/models/product_model.dart';
+import 'package:krunal_portfolio/screens/tags_view.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-class Project {
-  final String appName;
-  final String description;
-  final String image;
-  final List<String> tags;
-  final String iosAppLink;
-  final String androidAppLink;
-  final String githubLink;
-  final String projectStatus;
-
-  Project({
-    required this.appName,
-    required this.description,
-    required this.image,
-    required this.tags,
-    required this.iosAppLink,
-    required this.androidAppLink,
-    required this.githubLink,
-    required this.projectStatus,
-  });
-}
 
 class ProjectsSection extends StatefulWidget {
   const ProjectsSection({super.key});
@@ -37,8 +17,8 @@ class ProjectsSection extends StatefulWidget {
 class _ProjectsSectionState extends State<ProjectsSection> {
   int hoverIndex = -1;
 
-  final List<Project> projectsData = [
-    Project(
+  final List<ProjectModel> projectsData = [
+    ProjectModel(
       appName: "Zap Solar",
       description: "",
       image: "",
@@ -48,7 +28,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       githubLink: "",
       projectStatus: "In Progress",
     ),
-    Project(
+    ProjectModel(
       appName: "Zap Power App (Customer)",
       description: "Developed a modern application that customer check the subscription and purchase the subscription. Also Customer get the battery order delivery. "
           "",
@@ -69,7 +49,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     //   githubLink: "",
     //   projectStatus: "Hold",
     // ),
-    Project(
+    ProjectModel(
       appName: "FirmPet",
       description: "FirmPet is an advanced Health Monitoring App with curated features for pet health. "
           "Built a SwiftUI-based pet health monitoring application with Libre2 sensor integration, custom analytics charts, and multi-pet profile management. "
@@ -83,7 +63,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       githubLink: "",
       projectStatus: "Completed",
     ),
-    Project(
+    ProjectModel(
       appName: "My Virtual Business Card",
       description: "MVBC is the best online business card offering an innovative platform to manage your professional business cards on your mobile phone. "
           "Client can scanned and stored traditional business cards in the app and share business card with colleagues. "
@@ -95,7 +75,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       githubLink: "",
       projectStatus: "Completed",
     ),
-    Project(
+    ProjectModel(
       appName: "ParkForU - Driver",
       description: "Designed and developed the driver-side application for an airport valet and transportation service, enabling drivers to efficiently manage pickup and drop-off operations. "
           "Implemented secure trip management, ride acceptance workflows, manage online/offline availability status and driver shift tracking. "
@@ -107,7 +87,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       githubLink: "",
       projectStatus: "Completed",
     ),
-    Project(
+    ProjectModel(
       appName: "Score Ice - Hockey",
       description: "Developed and enhanced a hockey arena booking platform where arena managers create playing slots and users can discover and book available hockey sessions. "
           "Implemented advanced slot filtering, map-based slot discovery and resolved critical issues to improve performance and user experience.",
@@ -118,7 +98,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       githubLink: "",
       projectStatus: "Completed",
     ),
-    Project(
+    ProjectModel(
       appName: "Bio Music One",
       description: "Bio music is a mediation music app that helps to improve health, reduce stress and feel you relax.",
       image: "",
@@ -128,7 +108,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       githubLink: "",
       projectStatus: "Completed",
     ),
-    Project(
+    ProjectModel(
       appName: "Shree Khalashi Timala Punch",
       description: "This app provides community details, upcoming news and events.",
       image: "",
@@ -175,7 +155,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                 runSpacing: 15,
                 children: projectsData.asMap().entries.map((entry) {
                   int index = entry.key;
-                  Project data = entry.value;
+                  ProjectModel data = entry.value;
 
                   return SizedBox(
                     width: itemWidth,
@@ -191,7 +171,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   }
 
   //  Projects Data section
-  Widget _projectsDataView({required int index, required Project data}) {
+  Widget _projectsDataView({required int index, required ProjectModel data}) {
     final bool isHover = hoverIndex == index;
 
     return MouseRegion(
@@ -247,7 +227,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
             //  Tags
             Wrap(
               spacing: 6, runSpacing: 6,
-              children: data.tags.map((tag) => tagsView(title: tag)).toList(),
+              children: data.tags.map((tag) => TagsView(title: tag)).toList(),
             ),
 
             const SizedBox(height: 25,),
@@ -304,26 +284,6 @@ class _ProjectsSectionState extends State<ProjectsSection> {
               ],
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  //  Skills
-  Widget tagsView({required String title}) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
-      decoration: BoxDecoration(
-        color: AppColors.appWhiteColor.withValues(alpha: 0.05),
-        borderRadius: BorderRadius.circular(7),
-        border: Border.all(color: AppColors.lightWhiteColor.withValues(alpha: 0.7), width: 0.4),
-      ),
-      child: Text(
-        title,
-        style: GoogleFonts.lato(
-          color: AppColors.lightWhiteColor.withValues(alpha: 0.8),
-          fontSize: 13,
-          fontWeight: FontWeight.w500,
         ),
       ),
     );
