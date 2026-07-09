@@ -44,18 +44,25 @@ class ExperienceSection extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-      padding: const EdgeInsets.only(left: 50, right: 50, top: 20, bottom: 50),
-      color: AppColors.littleBlackColor,
+      padding: const EdgeInsets.only(left: 40, right: 40, bottom: 60),
+      // color: AppColors.littleBlackColor,
+      color: Color(0XFF121216),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 12,
         children: [
+          Padding(
+            padding: EdgeInsetsGeometry.symmetric(horizontal: 15),
+            child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.1),),
+          ),
+
+          // SECTION TITLE
           SectionTitleView(title: "Work Experience", textColor: AppColors.appWhiteColor),
 
           Padding(
-            padding: EdgeInsetsGeometry.only(left: 15),
+            padding: EdgeInsetsGeometry.only(left: 5),
             child: Column(
-              spacing: 25,
+              spacing: 30,
               children: [
                 zapPowerExperienceView(),
                 tecoCraftInfusionExperienceView(),
@@ -74,9 +81,10 @@ class ExperienceSection extends StatelessWidget {
     return Column(
       children: [
         _companyNameView(companyName: "ZAP Power FZCO", year: "July 2023 - Present"),
+        const SizedBox(height: 3,),
         _designationLocationView(designation: "iOS & Flutter App Developer", location: "Dubai, UAE"),
 
-        const SizedBox(height: 10,),
+        const SizedBox(height: 15,),
         _commonExperienceView(experience: zapPowerExperience, usedLanguages: zapPowerUsedLanguages),
       ],
     );
@@ -86,9 +94,10 @@ class ExperienceSection extends StatelessWidget {
     return Column(
       children: [
         _companyNameView(companyName: "Tecocraft Infusion PVT LTD", year: "August 2020 – May 2023"),
+        const SizedBox(height: 3,),
         _designationLocationView(designation: "Sr. iOS Application Developer", location: "Surat, India"),
 
-        const SizedBox(height: 10,),
+        const SizedBox(height: 15,),
         _commonExperienceView(experience: tecoCraftExperience, usedLanguages: tecoCraftUsedLanguages),
       ],
     );
@@ -98,9 +107,10 @@ class ExperienceSection extends StatelessWidget {
     return Column(
       children: [
         _companyNameView(companyName: "Varshaa WebLabs", year: "March 2018 – August 2020"),
+        const SizedBox(height: 3,),
         _designationLocationView(designation: "iOS Application Developer", location: "Surat, India"),
 
-        const SizedBox(height: 10,),
+        const SizedBox(height: 15,),
         _commonExperienceView(experience: varshaWebLabsExperience, usedLanguages: varshaWebLabsUsedLanguages),
       ],
     );
@@ -110,9 +120,10 @@ class ExperienceSection extends StatelessWidget {
     return Column(
       children: [
         _companyNameView(companyName: "BrainWaves", year: "November 2017 – February 2018"),
+        const SizedBox(height: 3,),
         _designationLocationView(designation: "Jr. iOS Application Developer", location: "Surat, India"),
 
-        const SizedBox(height: 10,),
+        const SizedBox(height: 15,),
         _commonExperienceView(experience: brainWavesExperience, usedLanguages: brainWavesUsedLanguages),
       ],
     );
@@ -154,9 +165,9 @@ class ExperienceSection extends StatelessWidget {
         Text(
           designation,
           style: GoogleFonts.lato(
-            fontSize: 13,
+            fontSize: 14,
             fontWeight: FontWeight.w700,
-            color: AppColors.orangeColor.shade700,
+            color: AppColors.cyanColor.shade200,
           ),
           textAlign: TextAlign.left,
         ),
@@ -181,10 +192,10 @@ class ExperienceSection extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.lightBlackColor.withValues(alpha: 0.7),
         border: Border(
-          top: BorderSide(color: AppColors.orangeColor.withValues(alpha: 0.5), width: 0.5),
-          bottom: BorderSide(color: AppColors.orangeColor.withValues(alpha: 0.5), width: 0.5),
-          left: BorderSide(color: AppColors.orangeColor.withValues(alpha: 0.5), width: 4.5),
-          right: BorderSide(color: AppColors.orangeColor.withValues(alpha: 0.5), width: 0.5),
+          top: BorderSide(color: AppColors.cyanColor.shade300.withValues(alpha: 0.5), width: 0.5),
+          bottom: BorderSide(color: AppColors.cyanColor.shade300.withValues(alpha: 0.5), width: 0.5),
+          left: BorderSide(color: AppColors.cyanColor.shade300.withValues(alpha: 0.5), width: 4.5),
+          right: BorderSide(color: AppColors.cyanColor.shade300.withValues(alpha: 0.5), width: 0.5),
         ),
         borderRadius: BorderRadius.circular(10),
       ),
@@ -200,7 +211,7 @@ class ExperienceSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircleAvatar(backgroundColor: AppColors.orangeColor, maxRadius: 3,),
+                  CircleAvatar(backgroundColor: AppColors.cyanColor, maxRadius: 3,),
                   const SizedBox(width: 10,),
                   Expanded(
                     child: Text(
@@ -239,7 +250,7 @@ class ExperienceSection extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.appBlackColor,
-        border: Border.all(color: AppColors.orangeColor.withValues(alpha: 0.2), width: 0.7),
+        border: Border.all(color: AppColors.cyanColor.withValues(alpha: 0.2), width: 0.7),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(

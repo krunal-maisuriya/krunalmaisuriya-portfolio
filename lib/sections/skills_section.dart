@@ -44,13 +44,19 @@ class _SkillsSectionState extends State<SkillsSection> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.only(left: 50, right: 50, top: 20, bottom: 50),
-      color: AppColors.appBlackColor,
+      padding: const EdgeInsets.only(left: 40, right: 40, bottom: 70),
+      // color: AppColors.appBlackColor,
+      color: Color(0XFF121216),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Padding(
+            padding: EdgeInsetsGeometry.symmetric(horizontal: 25),
+            child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.1),),
+          ),
 
           // SECTION TITLE
+          const SizedBox(height: 30),
           SectionTitleView(title: "Skills & Technologies", textColor: AppColors.appWhiteColor,),
           const SizedBox(height: 10),
 
@@ -67,27 +73,24 @@ class _SkillsSectionState extends State<SkillsSection> {
               columns = 3; // desktop
             }
 
-            double itemWidth = (width - (columns - 1) * 30) / columns;
+            double itemWidth = (width - (columns - 1) * 20) / columns;
 
-            return Padding(
-              padding: EdgeInsets.only(left: 15,),
-              child: Wrap(
-                spacing: 15,
-                runSpacing: 15,
-                children: skillsData.asMap().entries.map((entry) {
-                  int index = entry.key;
-                  Map<String, dynamic> data = entry.value;
+            return Wrap(
+              spacing: 15,
+              runSpacing: 15,
+              children: skillsData.asMap().entries.map((entry) {
+                int index = entry.key;
+                Map<String, dynamic> data = entry.value;
 
-                  return SizedBox(
-                    width: itemWidth,
-                    child: _skillsTechnologiesSectionView(
-                      index: index,
-                      title: data["title"],
-                      skills: List<String>.from(data["skills"]),
-                    ),
-                  );
-                }).toList(),
-              ),
+                return SizedBox(
+                  width: itemWidth,
+                  child: _skillsTechnologiesSectionView(
+                    index: index,
+                    title: data["title"],
+                    skills: List<String>.from(data["skills"]),
+                  ),
+                );
+              }).toList(),
             );
           }),
         ],
@@ -124,8 +127,8 @@ class _SkillsSectionState extends State<SkillsSection> {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: isHover
-              ? AppColors.orangeColor.shade700
-              : AppColors.greyColor.shade800,
+              ? AppColors.cyanColor.shade700
+              : AppColors.greyColor.shade900,
             width: 1,
           ),
         ),
@@ -139,7 +142,7 @@ class _SkillsSectionState extends State<SkillsSection> {
               style: GoogleFonts.lato(
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
-                color: AppColors.orangeColor.shade700,
+                color: AppColors.cyanColor.shade400,
               ),
             ),
             const SizedBox(height: 25,),

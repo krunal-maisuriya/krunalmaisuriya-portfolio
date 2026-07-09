@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
+import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 
 class HeaderNavView extends StatefulWidget {
   final Function(int) onTap;
@@ -47,7 +48,7 @@ class _HeaderNavViewState extends State<HeaderNavView> {
               Text(
                 items[index],
                 style: GoogleFonts.lato(
-                  fontSize: 15,
+                  fontSize: Responsive.scale(context, min: 12, max: 14),
                   fontWeight: FontWeight.w700,
                   color: AppColors.appWhiteColor,
                 ),
@@ -59,7 +60,7 @@ class _HeaderNavViewState extends State<HeaderNavView> {
                 duration: const Duration(milliseconds: 300),
                 height: 2,
                 width: isSelected ? 25 : 0,
-                color: AppColors.orangeColor.shade700,
+                color: AppColors.cyanColor.shade700,
               ),
             ],
           ),

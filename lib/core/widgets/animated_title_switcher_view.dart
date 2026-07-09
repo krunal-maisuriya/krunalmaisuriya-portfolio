@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
+import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 
 class AnimatedTitleSwitcherView extends StatefulWidget {
   const AnimatedTitleSwitcherView({super.key});
@@ -97,7 +98,11 @@ class _AnimatedTitleSwitcherViewState extends State<AnimatedTitleSwitcherView> {
     return Text(
       "$displayedText${showCursor ? "|" : ""}".toUpperCase(),
       style: GoogleFonts.lato(
-        fontSize: 20,
+        fontSize: Responsive.scale(context,
+          min: 8,
+          max: 22,
+        ),
+        // fontSize: 20,
         fontWeight: FontWeight.w800,
         color: AppColors.appWhiteColor,
         letterSpacing: 3,

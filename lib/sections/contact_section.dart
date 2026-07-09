@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
+import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 import 'package:krunal_portfolio/core/utils/helper/social_link_helper.dart';
 import 'package:krunal_portfolio/core/widgets/contact_me_hover_button.dart';
 
@@ -10,17 +11,22 @@ class ContactSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(50),
-      color: AppColors.appBlackColor,
+      padding: EdgeInsets.symmetric(horizontal: Responsive.scale(context, min: 0, max: 40),),
+      color: Color(0XFF121216),
       child: Column(
         children: [
+          Padding(
+            padding: EdgeInsetsGeometry.only(top: 20, bottom: 35, left: 25, right: 25),
+            child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.1),),
+          ),
+
           Text(
             "Get In Touch",
-            // "Let's Connect",
             style: GoogleFonts.lato(
-              fontSize: 40,
+              fontSize: Responsive.scale(context, min: 10, max: 40),
               fontWeight: FontWeight.bold,
               color: AppColors.appWhiteColor,
             ),
@@ -30,36 +36,31 @@ class ContactSection extends StatelessWidget {
           Text(
             "I am always interested in new opportunities or projects. Feel free to contact me to work together.",
             style: GoogleFonts.lato(
-              fontSize: 17,
+              fontSize: Responsive.scale(context, min: 8, max: 18),
               color: AppColors.greyColor,
             ),
+            textAlign: TextAlign.center,
           ),
 
-          const SizedBox(height: 20),
-
+          //  Contact Info View
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Contact Information",
-                style: GoogleFonts.lato(
-                  fontSize: 19,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.appWhiteColor,
-                ),
-              ),
-
-              const SizedBox(height: 30,),
+              SizedBox(height: Responsive.scale(context, min: 20, max: 45),),
 
               LayoutBuilder(
                 builder: (context, constraints) {
-                  bool isDesktop = constraints.maxWidth > 900;
+                  bool isDesktop = constraints.maxWidth > 850;
 
                   return Padding(
-                    padding: EdgeInsets.only(left: isDesktop ? 40 : 20, right: isDesktop ? 40 : 20, top: 0, bottom: 20),
+                    padding: EdgeInsets.only(
+                      left: Responsive.scale(context, min: 5, max: 40),
+                      right: Responsive.scale(context, min: 5, max: 40),
+                      top: 0, bottom: 20,
+                    ),
                     child: isDesktop
-                        ? _buildDesktopLayoutView()
-                        : _buildMobileLayoutView(),
+                        ? _buildDesktopLayoutView(context)
+                        : _buildMobileLayoutView(context),
                   );
                 },
               ),
@@ -72,12 +73,13 @@ class ContactSection extends StatelessWidget {
 
 
   //  DESKTOP VIEW
-  Widget _buildDesktopLayoutView() {
+  Widget _buildDesktopLayoutView(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      spacing: 20,
+      spacing: Responsive.scale(context, min: 5, max: 25),
       children: [
+        /// CONTACT ME
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,6 +87,7 @@ class ContactSection extends StatelessWidget {
               GestureDetector(
                 onTap: () => sendEmail(),
                 child: _contactInformationView(
+                  context: context,
                   icon: Icons.email_outlined, title: "Email", value: "akkimaisuriya@gmail.com",
                 ),
               ),
@@ -93,51 +96,41 @@ class ContactSection extends StatelessWidget {
               GestureDetector(
                 onTap: () => callPhone(),
                 child: _contactInformationView(
+                  context: context,
                   icon: Icons.phone_outlined, title: "Phone", value: "+971 502883728",
                 ),
               ),
 
               const SizedBox(height: 15,),
               _contactInformationView(
+                context: context,
                 icon: Icons.location_on_outlined, title: "Location", value: "Dubai, United Arab Emirates",
               ),
             ],
           ),
         ),
 
+        /// LET"S WORK TOGETHER
         Expanded(
           child: Container(
-            constraints: const BoxConstraints(minHeight: 260),
-            padding: EdgeInsets.only(left: 25, right: 40, top: 20, bottom: 15),
+            constraints: BoxConstraints(minHeight: Responsive.scale(context, min: 230, max: 260)),
+            padding: EdgeInsets.only(
+              left: Responsive.scale(context, min: 15, max: 25),
+              right: Responsive.scale(context, min: 15, max: 25),
+              top: 20, bottom: 25,
+            ),
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.greyColor.shade800.withValues(alpha: 0.8)),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Responsive.scale(context, min: 7, max: 10)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "LET'S WORK TOGETHER",
-                  style: GoogleFonts.lato(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.appWhiteColor,
-                    letterSpacing: 2,
-                  ),
-                ),
-
+                letsWorkTogether(context),
                 const SizedBox(height: 15,),
 
-                Text(
-                  "I'm available for Flutter and iOS development projects, app maintenance, feature enhancements, and technical consulting. Let's connect and create impactful mobile experiences.",
-                  style: GoogleFonts.lato(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.appWhiteColor.withValues(alpha: 0.5),
-                  ),
-                ),
-
-                const SizedBox(height: 15,),
+                letsWorkTogetherDesc(context),
+                const SizedBox(height: 25,),
 
                 ContactMeHoverButton(
                   title: "Connect Me", onTap: () => sendEmail(),
@@ -146,19 +139,24 @@ class ContactSection extends StatelessWidget {
                 const SizedBox(height: 20,),
 
                 Row(
-                  spacing: 10,
+                  spacing: Responsive.scale(context, min: 6, max: 10),
                   children: [
                     //  LinkedIn
-                    GestureDetector(
-                      onTap: () => openLinkedIn(),
-                      child: socialContactLink("LinkedIn", FontAwesomeIcons.linkedinIn),
+                    Flexible(
+                      child: GestureDetector(
+                        onTap: () => openLinkedIn(),
+                        child: socialContactLink(context, "LinkedIn", FontAwesomeIcons.linkedinIn),
+                      ),
                     ),
 
                     //  Github
-                    GestureDetector(
-                      onTap: () => openGithub(),
-                      child: socialContactLink("Github", FontAwesomeIcons.github),
+                    Flexible(
+                      child: GestureDetector(
+                        onTap: () => openGithub(),
+                        child: socialContactLink(context, "Github", FontAwesomeIcons.github),
+                      ),
                     ),
+                    Spacer(),
                   ],
                 ),
               ],
@@ -170,63 +168,57 @@ class ContactSection extends StatelessWidget {
   }
 
   //  MOBILE VIEW
-  Widget _buildMobileLayoutView() {
+  Widget _buildMobileLayoutView(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
+        //  Email
         GestureDetector(
           onTap: () => sendEmail(),
           child: _contactInformationView(
+            context: context,
             icon: Icons.email_outlined, title: "Email", value: "akkimaisuriya@gmail.com",
           ),
         ),
 
-        const SizedBox(height: 15,),
+        const SizedBox(height: 10,),
+        //  Phone
         GestureDetector(
           onTap: () => callPhone(),
           child: _contactInformationView(
+            context: context,
             icon: Icons.phone_outlined, title: "Phone", value: "+971 502883728",
           ),
         ),
-        const SizedBox(height: 15,),
+        const SizedBox(height: 10,),
 
+        //  Location
         _contactInformationView(
+          context: context,
           icon: Icons.location_on_outlined, title: "Location", value: "Dubai, United Arab Emirates",
         ),
         const SizedBox(height: 25,),
 
         Container(
-          constraints: const BoxConstraints(minHeight: 260),
-          padding: EdgeInsets.only(left: 25, right: 40, top: 20, bottom: 15),
+          constraints: BoxConstraints(minHeight: Responsive.scale(context, min: 210, max: 250)),
+          padding: EdgeInsets.only(
+            left: Responsive.scale(context, min: 5, max: 25),
+            right: Responsive.scale(context, min: 5, max: 25),
+            top: 20, bottom: 15,
+          ),
           decoration: BoxDecoration(
             border: Border.all(color: AppColors.greyColor.shade800.withValues(alpha: 0.8)),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(Responsive.scale(context, min: 8, max: 10)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "LET'S WORK TOGETHER",
-                style: GoogleFonts.lato(
-                  fontSize: 21,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.appWhiteColor,
-                  letterSpacing: 2,
-                ),
-              ),
-
+              letsWorkTogether(context),
               const SizedBox(height: 15,),
 
-              Text(
-                "I'm available for Flutter and iOS development projects, app maintenance, feature enhancements, and technical consulting. Let's connect and create impactful mobile experiences.",
-                style: GoogleFonts.lato(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.appWhiteColor.withValues(alpha: 0.5),
-                ),
-              ),
-
+              letsWorkTogetherDesc(context),
               const SizedBox(height: 15,),
 
               ContactMeHoverButton(
@@ -236,18 +228,18 @@ class ContactSection extends StatelessWidget {
               const SizedBox(height: 20,),
 
               //  LinkedIn
-              Row(
-                spacing: 10,
+              Column(
+                spacing: Responsive.scale(context, min: 6, max: 10),
                 children: [
                   GestureDetector(
                     onTap: () => openLinkedIn(),
-                    child: socialContactLink("LinkedIn", FontAwesomeIcons.linkedinIn),
+                    child: socialContactLink(context, "LinkedIn", FontAwesomeIcons.linkedinIn),
                   ),
 
                   //  Github
                   GestureDetector(
                     onTap: () => openGithub(),
-                    child: socialContactLink("Github", FontAwesomeIcons.github),
+                    child: socialContactLink(context, "Github", FontAwesomeIcons.github),
                   ),
                 ],
               ),
@@ -258,79 +250,148 @@ class ContactSection extends StatelessWidget {
     );
   }
 
+
   //  Contact Information
-  Widget _contactInformationView({required IconData icon, required String title, required String value}) {
+  Widget _contactInformationView({
+    required BuildContext context,
+    required IconData icon,
+    required String title,
+    required String value,
+  }) {
     return Container(
-      padding: EdgeInsets.only(left: 25, right: 15, top: 15, bottom: 15),
+      padding: EdgeInsets.only(
+        left: Responsive.scale(context, min: 5, max: 25),
+        right: Responsive.scale(context, min: 5, max: 25),
+        top: Responsive.scale(context, min: 5, max: 15),
+        bottom: Responsive.scale(context, min: 5, max: 15),
+      ),
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.greyColor.shade800.withValues(alpha: 0.8)),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Responsive.scale(context, min: 7, max: 10)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        spacing: 15,
         children: [
+
           Container(
-            width: 45, height: 45,
+            width: Responsive.scale(context, min: 10, max: 45),
+            height: Responsive.scale(context, min: 10, max: 45),
             decoration: BoxDecoration(
-              color: AppColors.orangeColor.withValues(alpha: 0.05),
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: AppColors.orangeColor, width: 0.5),
-            ),
-            child: Icon(icon, color: AppColors.orangeColor,),
-          ),
-          Wrap(
-            direction: Axis.vertical,
-            children: [
-              Text(
-                title,
-                style: GoogleFonts.lato(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.appWhiteColor.withValues(alpha: 0.5),
-                ),
+              color: AppColors.cyanColor.withValues(alpha: 0.05),
+              borderRadius: BorderRadius.circular(
+                Responsive.scale(context, min: 4, max: 10),
               ),
+              border: Border.all(color: AppColors.cyanColor, width: 0.5),
+            ),
+            child: Icon(
+              icon,
+              color: AppColors.cyanColor,
+              size: Responsive.scale(context, min: 8, max: 25),
+            ),
+          ),
 
-              GestureDetector(
-                onTap: () {
+          SizedBox(width: Responsive.scale(context, min: 5, max: 15),),
 
-                },
-                child: Text(
-                  value,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  title,
+                  softWrap: true,
+                  overflow: TextOverflow.visible,
                   style: GoogleFonts.lato(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.appWhiteColor,
+                    fontSize: Responsive.scale(context, min: 8, max: 13),
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.appWhiteColor.withValues(alpha: 0.5),
                   ),
                 ),
-              ),
-            ],
+
+                GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    value,
+                    softWrap: true,
+                    overflow: TextOverflow.visible,
+                    style: GoogleFonts.lato(
+                      fontSize: Responsive.scale(context, min: 8, max: 15),
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.appWhiteColor,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
 
+  //  Let's Work Together
+  Widget letsWorkTogether(BuildContext context) {
+    return Text(
+      "LET'S WORK TOGETHER",
+      style: GoogleFonts.lato(
+        fontSize: Responsive.scale(context, min: 8, max: 18),
+        fontWeight: FontWeight.w800,
+        color: AppColors.appWhiteColor,
+        letterSpacing: 2,
+      ),
+    );
+  }
+
+  //  Lets Work Desc
+  Widget letsWorkTogetherDesc(BuildContext context) {
+    return Text(
+      "I'm available for Flutter and iOS development projects, app maintenance, feature enhancements, and technical consulting. "
+          "Let's connect and create impactful mobile experiences.",
+      style: GoogleFonts.lato(
+        fontSize: Responsive.scale(context, min: 8, max: 15),
+        fontWeight: FontWeight.w400,
+        color: AppColors.appWhiteColor.withValues(alpha: 0.5),
+      ),
+    );
+  }
+
   //  Contact Link
-  Widget socialContactLink(String title, IconData icon) {
+  Widget socialContactLink(BuildContext context, String title, IconData icon) {
     return Container(
       alignment: Alignment.center,
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        vertical: Responsive.scale(context, min: 8, max: 12),
+        horizontal: Responsive.scale(context, min: 5, max: 15),
+      ),
       decoration: BoxDecoration(
         color: AppColors.lightBlackColor,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.orangeColor.shade700, width: 0.5),
+        borderRadius: BorderRadius.circular(Responsive.scale(context, min: 5, max: 10)),
+        border: Border.all(color: AppColors.cyanColor.shade700, width: 0.5),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          FaIcon(icon, color: AppColors.lightWhiteColor, size: 20),
-          const SizedBox(width: 10,),
-          Text(
-            title,
-            style: GoogleFonts.lato(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: AppColors.lightWhiteColor,
+          FaIcon(
+            icon,
+            color: AppColors.lightWhiteColor,
+            size: Responsive.scale(context, min: 7, max: 18),
+          ),
+
+          SizedBox(width: Responsive.scale(context, min: 2, max: 12),),
+
+          Flexible(
+            child: Text(
+              title,
+              maxLines: 5,
+              softWrap: true,
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.lato(
+                fontSize: Responsive.scale(context, min: 5.5, max: 15),
+                fontWeight: FontWeight.w600,
+                color: AppColors.lightWhiteColor,
+              ),
             ),
           ),
         ],

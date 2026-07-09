@@ -2,9 +2,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
+import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 import 'package:krunal_portfolio/core/utils/helper/social_link_helper.dart';
 import 'package:krunal_portfolio/screens/header_view.dart';
 import 'package:krunal_portfolio/sections/contact_section.dart';
+import 'package:krunal_portfolio/sections/copy_right_section.dart';
 import 'package:krunal_portfolio/sections/experience_section.dart';
 import 'package:krunal_portfolio/sections/hero_sections.dart';
 import 'package:krunal_portfolio/sections/projects_section.dart';
@@ -49,8 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       body: Stack(
         children: [
@@ -59,15 +59,14 @@ class _HomeScreenState extends State<HomeScreen> {
           SingleChildScrollView(
             controller: scrollController,
             child: Column(
+              spacing: 0,
               children: [
                 Container(key: homeKey, child: HeroSections()),
-                Container(key: experienceKey, child: ExperienceSection()),
+                // Container(key: experienceKey, child: ExperienceSection()),
                 Container(key: skillsKey, child: SkillsSection()),
-                Container(key: projectsKey, child: ProjectsSection()),
+                // Container(key: projectsKey, child: ProjectsSection()),
                 Container(key: contactKey, child: ContactSection()),
-
-                //  Bottom year section
-                _bottomCopyRightYearSection(),
+                CopyRightSection(),
               ],
             ),
           ),
@@ -78,40 +77,8 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 _navbar(),
 
-                // Mobile View
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  height: isMenuOpen ? (width >= 650) ? 0 : 370 : 0,
-                  width: double.infinity,
-                  child: ClipRect(
-                    child: Container(
-                      color: Colors.black87,
-                      child: ListView(
-                        padding: EdgeInsets.zero,
-                        children: [
-                          _menuItem(title: "Home", index: 0),
-                          _menuItem(title: "Experience", index: 1),
-                          _menuItem(title: "Skills", index: 2),
-                          _menuItem(title: "Projects", index: 3),
-                          _menuItem(title: "Contact", index: 4),
-
-                          Column(
-                            children: [
-                              Divider(color: AppColors.appWhiteColor.withValues(alpha: 0.3),),
-
-                              Padding(
-                                padding: EdgeInsetsGeometry.symmetric(horizontal: 15),
-                                child: hireMeNavView(),
-                              ),
-
-                              Divider(color: AppColors.appWhiteColor.withValues(alpha: 0.3)),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                // Expandable Navbar in Mobile View
+                _expandableNavbarMobileView(context),
               ],
             ),
           ),
@@ -129,14 +96,14 @@ class _HomeScreenState extends State<HomeScreen> {
         filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
         child: Container(
           height: 90,
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: EdgeInsets.symmetric(horizontal: Responsive.scale(context, min: 6, max: 30)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Krunal",
                 style: GoogleFonts.lato(
-                  fontSize: 28,
+                  fontSize: Responsive.scale(context, min: 8, max: 28),
                   fontWeight: FontWeight.bold,
                   color: AppColors.appWhiteColor,
                 ),
@@ -152,15 +119,59 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 )
               else
-                IconButton(
+                if (width > 100)
+                  IconButton(
                   icon: Icon(
                     isMenuOpen ? Icons.close : Icons.menu,
                     color: AppColors.appWhiteColor,
+                    size: Responsive.scale(context, min: width < 100 ? 8 : 15, max: 35),
                   ),
                   onPressed: () {
                     setState(() => isMenuOpen = !isMenuOpen);
                   },
-                ),
+                )
+                else
+                  SizedBox(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+
+  /// Expandable NavBar in Mobile View
+  Widget _expandableNavbarMobileView(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      height: isMenuOpen ? (width >= 650) ? 0 : Responsive.scale(context, min: 230, max: 370) : 0,
+      width: double.infinity,
+      child: ClipRect(
+        child: Container(
+          color: Color(0XFF111827),
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              _menuItem(title: "Home", index: 0),
+              _menuItem(title: "Experience", index: 1),
+              _menuItem(title: "Skills", index: 2),
+              _menuItem(title: "Projects", index: 3),
+              _menuItem(title: "Contact", index: 4),
+
+              Column(
+                children: [
+                  Divider(color: AppColors.appWhiteColor.withValues(alpha: 0.3),),
+
+                  Padding(
+                    padding: EdgeInsetsGeometry.symmetric(horizontal: Responsive.scale(context, min: 3, max: 15)),
+                    child: hireMeNavView(),
+                  ),
+
+                  Divider(color: AppColors.appWhiteColor.withValues(alpha: 0.3)),
+                ],
+              ),
             ],
           ),
         ),
@@ -178,26 +189,28 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: 12,),
+        padding: EdgeInsets.symmetric(vertical: Responsive.scale(context, min: 7, max: 12),),
         decoration: BoxDecoration(
           color: selectedVIndex == index
-              ? AppColors.orangeColor.shade300.withValues(alpha: 0.15)
+              ? AppColors.cyanColor.shade300.withValues(alpha: 0.15)
               : Colors.transparent,
         ),
         child: Row(
           children: [
             AnimatedContainer(
               duration: const Duration(milliseconds: 300),
-              height: 30,
+              height: Responsive.scale(context, min: 20, max: 30),
               width: selectedVIndex == index ? 3 : 0,
-              color: AppColors.orangeColor.shade900,
+              color: AppColors.cyanColor.shade900,
             ),
-            const SizedBox(width: 25,),
+
+            SizedBox(width: Responsive.scale(context, min: 8, max: 35),),
+
             Text(
               title,
               style: GoogleFonts.lato(
                 color: AppColors.appWhiteColor,
-                fontSize: 16,
+                fontSize: Responsive.scale(context, min: 6, max: 25),
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -214,11 +227,14 @@ class _HomeScreenState extends State<HomeScreen> {
       onTap: () => sendEmail(),
       child: Container(
         width: (width >= 650) ? 80 : double.infinity,
-        padding: EdgeInsets.symmetric(vertical: (width >= 650) ? 7 : 10, horizontal: 12),
+        padding: EdgeInsets.symmetric(
+          vertical: Responsive.scale(context, min: 6, max: 10),
+          horizontal: Responsive.scale(context, min: 5, max: 12),
+        ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: AppColors.orangeColor.shade800, width: 1.0),
-          color: AppColors.orangeColor.shade800,
+          borderRadius: BorderRadius.circular(Responsive.scale(context, min: 4, max: 8)),
+          border: Border.all(color: AppColors.cyanColor.shade800, width: 1.0),
+          color: AppColors.cyanColor.shade800,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -226,9 +242,9 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Hire Me",
+              "Hire me",
               style: GoogleFonts.lato(
-                fontSize: 14,
+                fontSize: Responsive.scale(context, min: (width >= 650) ? 10 : 7, max: (width >= 650) ? 13 : 13),
                 fontWeight: FontWeight.w800,
                 color: AppColors.appWhiteColor,
               ),
@@ -257,29 +273,5 @@ class _HomeScreenState extends State<HomeScreen> {
         scrollToSection(contactKey);
         break;
     }
-  }
-
-
-  Widget _bottomCopyRightYearSection() {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 30),
-      color: AppColors.littleBlackColor,
-      alignment: Alignment.center,
-      child: Row(
-        children: [
-          Spacer(),
-          Text(
-            "© 2026 Krunal Maisuriya. All rights reserved.",
-            style: GoogleFonts.lato(
-                fontSize: 14,
-                color: AppColors.greyColor.shade700,
-              ),
-          ),
-
-          Spacer(),
-        ],
-      ),
-    );
   }
 }

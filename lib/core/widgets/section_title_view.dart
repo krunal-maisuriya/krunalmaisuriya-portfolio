@@ -16,18 +16,19 @@ class SectionTitleView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            title,
+            title.toUpperCase(),
             style: GoogleFonts.lato(
               fontSize: 30,
               fontWeight: FontWeight.w800,
               color: textColor,
+              letterSpacing: 3,
             ),
           ),
           const SizedBox(height: 2,),
           Container(
-            width: 65, height: 3,
+            width: 65, height: 4.5,
             decoration: BoxDecoration(
-              color: AppColors.orangeColor.shade700,
+              color: AppColors.cyanColor.shade800,
               borderRadius: BorderRadius.circular(15),
             ),
           ),

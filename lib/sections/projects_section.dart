@@ -124,12 +124,18 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 50, right: 50, top: 0, bottom: 50),
-      color: AppColors.littleBlackColor,
+      padding: const EdgeInsets.only(left: 40, right: 40, bottom: 50),
+      // color: AppColors.littleBlackColor,
+      color: Color(0XFF121216),
       child: Column(
         children: [
+          Padding(
+            padding: EdgeInsetsGeometry.symmetric(horizontal: 25),
+            child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.1),),
+          ),
 
           // SECTION TITLE
+          const SizedBox(height: 20),
           SectionTitleView(title: "Projects", textColor: AppColors.appWhiteColor,),
           const SizedBox(height: 10),
 
@@ -146,23 +152,19 @@ class _ProjectsSectionState extends State<ProjectsSection> {
               columns = 3; // desktop
             }
 
-            double itemWidth = (width - (columns - 1) * 30) / columns;
+            double itemWidth = (width - (columns - 1) * 20) / columns;
+            return Wrap(
+              spacing: 15,
+              runSpacing: 15,
+              children: projectsData.asMap().entries.map((entry) {
+                int index = entry.key;
+                ProjectModel data = entry.value;
 
-            return Padding(
-              padding: EdgeInsets.only(left: 15,),
-              child: Wrap(
-                spacing: 15,
-                runSpacing: 15,
-                children: projectsData.asMap().entries.map((entry) {
-                  int index = entry.key;
-                  ProjectModel data = entry.value;
-
-                  return SizedBox(
-                    width: itemWidth,
-                    child: _projectsDataView(index: index, data: data),
-                  );
-                }).toList(),
-              ),
+                return SizedBox(
+                  width: itemWidth,
+                  child: _projectsDataView(index: index, data: data),
+                );
+              }).toList(),
             );
           }),
         ],
@@ -194,8 +196,8 @@ class _ProjectsSectionState extends State<ProjectsSection> {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: isHover
-                ? AppColors.orangeColor.shade700
-                : AppColors.greyColor.shade800,
+                ? AppColors.cyanColor.shade700
+                : AppColors.greyColor.shade900,
             width: 1,
           ),
         ),
@@ -209,7 +211,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
               style: GoogleFonts.lato(
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
-                color: AppColors.orangeColor.shade700,
+                color: AppColors.cyanColor.shade400,
               ),
             ),
             const SizedBox(height: 15,),
@@ -241,7 +243,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                     color: data.projectStatus == "Completed"
                         ? AppColors.darkGreenColor.withValues(alpha: 0.1)
                         : data.projectStatus == "In Progress"
-                        ? AppColors.orangeColor.withValues(alpha: 0.1)
+                        ? AppColors.orangeColor.withValues(alpha: 0.05)
                         : AppColors.lightBlackColor.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(

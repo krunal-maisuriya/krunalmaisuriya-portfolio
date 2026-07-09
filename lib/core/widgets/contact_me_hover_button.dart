@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
+import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 
 class ContactMeHoverButton extends StatefulWidget {
   final String title;
@@ -31,15 +32,15 @@ class _ContactMeHoverButtonState extends State<ContactMeHoverButton> {
         curve: Curves.easeOut,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 13,
+          padding: EdgeInsets.symmetric(
+            horizontal: Responsive.scale(context, min: 5, max: 25),
+            vertical: Responsive.scale(context, min: 5, max: 15),
           ),
           decoration: BoxDecoration(
             color: isHovering
-                ? AppColors.orangeColor.shade800
-                : AppColors.orangeColor.shade700,
-            borderRadius: BorderRadius.circular(12),
+                ? AppColors.cyanColor.shade800
+                : AppColors.cyanColor.shade700,
+            borderRadius: BorderRadius.circular(Responsive.scale(context, min: 6, max: 11)),
             boxShadow: isHovering ? [
               BoxShadow(
                 blurRadius: 15,
@@ -54,16 +55,26 @@ class _ContactMeHoverButtonState extends State<ContactMeHoverButton> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                "Connect Me",
-                style: GoogleFonts.lato(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.appWhiteColor,
+              Flexible(
+                child: Text(
+                  "Connect Me",
+                  maxLines: 5,
+                  softWrap: true,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.lato(
+                    fontSize: Responsive.scale(context, min: 2.5, max: 15),
+                    fontWeight: FontWeight.w800,
+                    color: AppColors.appWhiteColor,
+                  ),
                 ),
               ),
-              const SizedBox(width: 5,),
-              Icon(Icons.arrow_right_alt_sharp, size: 25, color: AppColors.appWhiteColor,),
+
+              SizedBox(width: Responsive.scale(context, min: 2, max: 5),),
+              Icon(
+                Icons.arrow_right_alt_sharp,
+                color: AppColors.appWhiteColor,
+                size: Responsive.scale(context, min: 6, max: 23),
+              ),
             ],
           ),
         ),

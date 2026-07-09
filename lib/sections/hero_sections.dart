@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
+import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 import 'package:krunal_portfolio/core/utils/helper/social_link_helper.dart';
 import 'package:krunal_portfolio/core/widgets/animated_title_switcher_view.dart';
 import 'package:krunal_portfolio/core/widgets/social_media_tag_view.dart';
@@ -12,20 +13,21 @@ class HeroSections extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.appBlackColor,
+      color: Color(0XFF121216),
       child: LayoutBuilder(
         builder: (context, constraints) {
           bool isDesktop = constraints.maxWidth > 990;
 
           return Padding(
             padding: EdgeInsets.only(
-              left: 40, right: 40,
+              left: Responsive.scale(context, min: 3, max: 40),
+              right: Responsive.scale(context, min: 3, max: 40),
               top: isDesktop ? 150 : 120,
               bottom: isDesktop ? 120 : 40,
             ),
             child: isDesktop
-                ? _buildDesktopLayout()
-                : _buildMobileLayout(),
+                ? _buildDesktopLayout(context)
+                : _buildMobileLayout(context),
           );
         },
       ),
@@ -34,12 +36,12 @@ class HeroSections extends StatelessWidget {
 
 
   //  DESKTOP VIEW
-  Widget _buildDesktopLayout() {
+  Widget _buildDesktopLayout(BuildContext context,) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         // LEFT CONTENT
-        Expanded(child: _textContent(textAlign: TextAlign.left),),
+        Expanded(child: _textContent(context, textAlign: TextAlign.left),),
         const SizedBox(width: 100),
 
         // RIGHT IMAGE
@@ -50,13 +52,14 @@ class HeroSections extends StatelessWidget {
   }
 
   //  MOBILE VIEW
-  Widget _buildMobileLayout() {
+  Widget _buildMobileLayout(BuildContext context,) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _profileImage(textAlign: TextAlign.center),
         const SizedBox(height: 30),
         _textContent(
+          context,
           textAlign: TextAlign.center,
         ),
       ],
@@ -71,7 +74,7 @@ class HeroSections extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.greyColor,
         borderRadius: BorderRadius.circular(160),
-        border: Border.all(color: AppColors.orangeColor.shade800.withValues(alpha: 0.8), width: 1.5),
+        border: Border.all(color: AppColors.cyanColor.shade800.withValues(alpha: 0.8), width: 3.5),
         image: const DecorationImage(
           image: AssetImage("assets/krunal_maisuriya.jpeg"),
           fit: BoxFit.cover,
@@ -79,7 +82,7 @@ class HeroSections extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             blurRadius: 50,
-            color: AppColors.orangeColor.withValues(alpha: 0.34),
+            color: AppColors.cyanColor.withValues(alpha: 0.34),
           ),
         ],
       ),
@@ -87,7 +90,7 @@ class HeroSections extends StatelessWidget {
   }
 
   // ✍️ TEXT CONTENT
-  Widget _textContent({required TextAlign textAlign}) {
+  Widget _textContent(BuildContext context, {required TextAlign textAlign}) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: textAlign == TextAlign.left
@@ -97,7 +100,10 @@ class HeroSections extends StatelessWidget {
         Text(
           "Hi, I'm ",
           style: GoogleFonts.lato(
-            fontSize: textAlign == TextAlign.left ? 15 : 20,
+            fontSize: Responsive.scale(context,
+              min: textAlign == TextAlign.left ? 15 : 10,
+              max: textAlign == TextAlign.left ? 15 : 20,
+            ),
             fontWeight: FontWeight.bold,
             color: AppColors.appWhiteColor.withValues(alpha: 0.7),
           ),
@@ -105,9 +111,9 @@ class HeroSections extends StatelessWidget {
         ),
 
         ShaderMask(
-          shaderCallback: (bounds) => const LinearGradient(
+          shaderCallback: (bounds) => LinearGradient(
             colors: [
-              Colors.orange,
+              Colors.cyanAccent.shade200,
               Colors.blueAccent,
             ],
           ).createShader(
@@ -116,7 +122,11 @@ class HeroSections extends StatelessWidget {
           child: Text(
             "Krunal Maisuriya",
             style: GoogleFonts.lato(
-              fontSize: textAlign == TextAlign.left ? 50 : 33,
+              fontSize: Responsive.scale(context,
+                min: textAlign == TextAlign.left ? 15 : 12,
+                max: textAlign == TextAlign.left ? 50 : 38,
+              ),
+              // fontSize: textAlign == TextAlign.left ? 50 : 33,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
@@ -137,7 +147,7 @@ class HeroSections extends StatelessWidget {
                 "With a strong expertise in Swift, SwiftUI, Flutter and modern mobile architectures. "
                 "Passionate about creating seamless user experiences and transforming ideas into innovative, high-impact digital products.",
             style: GoogleFonts.lato(
-              fontSize: 16,
+              fontSize: Responsive.scale(context, min: 8, max: textAlign == TextAlign.left ? 16 : 20),
               color: AppColors.appWhiteColor.withValues(alpha: 0.7),
             ),
           ),
@@ -148,27 +158,39 @@ class HeroSections extends StatelessWidget {
           mainAxisAlignment: textAlign == TextAlign.left
               ? MainAxisAlignment.start
               : MainAxisAlignment.center,
-          spacing: 10,
+          spacing: Responsive.scale(context, min: 3, max: 10),
           children: [
+            //  CV
             Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              padding: EdgeInsets.symmetric(
+                vertical: Responsive.scale(context, min: 7, max: 8),
+                horizontal: Responsive.scale(context, min: 3, max: 20),
+              ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppColors.orangeColor.shade900, width: 1.0),
-                color: AppColors.orangeColor.shade800.withValues(alpha: 0.15),
+                borderRadius: BorderRadius.circular(Responsive.scale(context, min: 7, max: 12)),
+                border: Border.all(color: AppColors.cyanColor.shade500, width: 1.0),
+                color: AppColors.cyanColor.shade800.withValues(alpha: 0.15),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.download_rounded, size: 25, color: AppColors.appWhiteColor,),
-                  const SizedBox(width: 8,),
+                  Icon(Icons.download_rounded,
+                    size: textAlign == TextAlign.left
+                        ? 25
+                        : Responsive.scale(context, min: 3, max: 30),
+                    color: AppColors.appWhiteColor,
+                  ),
+                  SizedBox(width: Responsive.scale(context, min: 1, max: 8),),
                   Text(
                     // "Download CV",
                     "CV",
                     style: GoogleFonts.lato(
-                      fontSize: 14,
+                      fontSize: textAlign == TextAlign.left
+                          ? 14
+                          : Responsive.scale(context, min: 3, max: 20),
+                      // fontSize: 14,
                       fontWeight: FontWeight.w800,
                       color: AppColors.appWhiteColor,
                     ),
@@ -177,29 +199,46 @@ class HeroSections extends StatelessWidget {
               ),
             ),
 
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppColors.orangeColor.shade800, width: 1.0),
-                color: AppColors.orangeColor.shade800,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    "View My Work",
-                    style: GoogleFonts.lato(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w800,
-                      color: AppColors.appWhiteColor,
+            //  View My Work
+            Flexible(
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: Responsive.scale(context, min: 7, max: 12),
+                  horizontal: Responsive.scale(context, min: 3, max: 20),
+                ),
+                // padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Responsive.scale(context, min: 7, max: 12)),
+                  border: Border.all(color: AppColors.cyanColor.shade800, width: 1.0),
+                  color: AppColors.cyanColor.shade800,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        "View My Work",
+                        softWrap: true,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 4,
+                        style: GoogleFonts.lato(
+                          fontSize: textAlign == TextAlign.left
+                              ? 14
+                              : Responsive.scale(context, min: 3, max: 20),
+                          // fontSize: 14,
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.appWhiteColor,
+                        ),
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 5,),
-                  Icon(Icons.arrow_right_alt_sharp, size: 25, color: AppColors.appWhiteColor,),
-                ],
+                    SizedBox(width: Responsive.scale(context, min: 0, max: 5),),
+                    Icon(Icons.arrow_right_alt_sharp, color: AppColors.appWhiteColor,
+                      size: Responsive.scale(context, min: 3, max: 25),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -211,7 +250,7 @@ class HeroSections extends StatelessWidget {
           mainAxisAlignment: textAlign == TextAlign.left
               ? MainAxisAlignment.start
               : MainAxisAlignment.center,
-          spacing: 12,
+          spacing: Responsive.scale(context, min: 2, max: 12),
           children: [
 
             //  LinkedIn
@@ -247,8 +286,8 @@ class HeroSections extends StatelessWidget {
               ? MainAxisAlignment.start
               : MainAxisAlignment.center,
           children: [
-            _experienceProjectView(value: "8+", title: "YEAR OF EXPERIENCE"),
-            const SizedBox(width: 35),
+            _experienceProjectView(context, value: "8+", title: "YEAR OF EXPERIENCE"),
+            SizedBox(width: Responsive.scale(context, min: 3, max: 35)),
 
             Container(
               width: 1,
@@ -258,8 +297,8 @@ class HeroSections extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(width: 35),
-            _experienceProjectView(value: "13+", title: "MAJOR PROJECTS"),
+            SizedBox(width: Responsive.scale(context, min: 3, max: 35)),
+            _experienceProjectView(context, value: "13+", title: "MAJOR PROJECTS"),
           ],
         ),
       ],
@@ -267,16 +306,16 @@ class HeroSections extends StatelessWidget {
   }
 
   //  Experience & Done Project View
-  Widget _experienceProjectView({required String value, required String title}) {
+  Widget _experienceProjectView(BuildContext context, {required String value, required String title}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           value,
           style: GoogleFonts.lato(
-            fontSize: 35,
+            fontSize: Responsive.scale(context, min: 7, max: 35),
             fontWeight: FontWeight.w900,
-            color: AppColors.orangeColor.shade800,
+            color: AppColors.cyanColor.shade800,
           ),
           textAlign: TextAlign.center,
         ),
@@ -284,7 +323,7 @@ class HeroSections extends StatelessWidget {
         Text(
           title,
           style: GoogleFonts.lato(
-            fontSize: 11,
+            fontSize: Responsive.scale(context, min: 1, max: 17),
             fontWeight: FontWeight.w400,
             color: AppColors.appWhiteColor,
           ),
