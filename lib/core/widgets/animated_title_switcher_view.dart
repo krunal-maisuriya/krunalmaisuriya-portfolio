@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
 import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
+import 'package:krunal_portfolio/core/widgets/app_label_text/app_label_text_view.dart';
 
 class AnimatedTitleSwitcherView extends StatefulWidget {
   const AnimatedTitleSwitcherView({super.key});
@@ -95,18 +96,14 @@ class _AnimatedTitleSwitcherViewState extends State<AnimatedTitleSwitcherView> {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return AppLabelTextView(
       "$displayedText${showCursor ? "|" : ""}".toUpperCase(),
-      style: GoogleFonts.lato(
-        fontSize: Responsive.scale(context,
-          min: 8,
-          max: 22,
-        ),
-        // fontSize: 20,
-        fontWeight: FontWeight.w800,
-        color: AppColors.appWhiteColor,
-        letterSpacing: 3,
-      ),
+      fontSize: Responsive.isMobile(context)
+          ? Responsive.scale(context, min: 10, max: 22)
+          : Responsive.isTablet(context) ? 15 : 17,
+      fontWeight: FontWeight.w800,
+      textColor: AppColors.appWhiteColor,
+      letterSpacing: 3,
     );
   }
 }

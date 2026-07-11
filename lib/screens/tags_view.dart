@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
+import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
+import 'package:krunal_portfolio/core/widgets/app_label_text/app_label_text_view.dart';
 
 class TagsView extends StatefulWidget {
   final String title;
@@ -17,16 +19,17 @@ class _TagsViewState extends State<TagsView> {
       padding: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
       decoration: BoxDecoration(
         color: AppColors.appWhiteColor.withValues(alpha: 0.05),
-        borderRadius: BorderRadius.circular(7),
+        borderRadius: BorderRadius.circular(
+          Responsive.isMobile(context) ? Responsive.scale(context, min: 6, max: 8) : 7,
+        ),
         border: Border.all(color: AppColors.lightWhiteColor.withValues(alpha: 0.7), width: 0.4),
       ),
-      child: Text(
+      child: AppLabelTextView(
         widget.title,
-        style: GoogleFonts.lato(
-          color: AppColors.lightWhiteColor.withValues(alpha: 0.8),
-          fontSize: 13,
-          fontWeight: FontWeight.w500,
-        ),
+        fontSize: Responsive.isMobile(context)
+            ? Responsive.scale(context, min: 8, max: 18) : 12,
+        fontWeight: FontWeight.w500,
+        textColor: AppColors.lightWhiteColor.withValues(alpha: 0.8),
       ),
     );
   }

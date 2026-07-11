@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
+import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
+import 'package:krunal_portfolio/core/widgets/app_label_text/app_label_text_view.dart';
 import 'package:krunal_portfolio/core/widgets/section_title_view.dart';
 
 class SkillsSection extends StatefulWidget {
@@ -44,15 +46,21 @@ class _SkillsSectionState extends State<SkillsSection> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.only(left: 40, right: 40, bottom: 70),
-      // color: AppColors.appBlackColor,
+      padding: EdgeInsets.only(
+        left: Responsive.scale(context, min: 5, max: 40),
+        right: Responsive.scale(context, min: 5, max: 40),
+        bottom: 70,
+      ),
       color: Color(0XFF121216),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: 25),
-            child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.1),),
+            padding: EdgeInsetsGeometry.symmetric(
+              horizontal: Responsive.isMobile(context)
+                  ? Responsive.scale(context, min: 5, max: 25) : 25,
+            ),
+            child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.4),),
           ),
 
           // SECTION TITLE
@@ -118,7 +126,11 @@ class _SkillsSectionState extends State<SkillsSection> {
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
         constraints: const BoxConstraints(minHeight: 150),
-        padding: const EdgeInsets.only(left: 16, right: 16, top: 15, bottom: 20),
+        padding: EdgeInsets.only(
+          top: 15, bottom: 20,
+          left: Responsive.isMobile(context) ? Responsive.scale(context, min: 5, max: 16) : 16,
+          right: Responsive.isMobile(context) ? Responsive.scale(context, min: 5, max: 16) : 16,
+        ),
         width: double.infinity,
         transform: isHover
             ? Matrix4.translationValues(0, -3, 0)
@@ -137,15 +149,19 @@ class _SkillsSectionState extends State<SkillsSection> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // HEADER
-            Text(
+            AppLabelTextView(
               title,
-              style: GoogleFonts.lato(
-                fontSize: 17,
-                fontWeight: FontWeight.bold,
-                color: AppColors.cyanColor.shade400,
-              ),
+              fontSize: Responsive.isMobile(context)
+                  ? Responsive.scale(context, min: 10, max: 22) : 17,
+              // fontSize: 17,
+              fontWeight: FontWeight.bold,
+              textColor: AppColors.cyanColor.shade400,
             ),
-            const SizedBox(height: 25,),
+
+            SizedBox(height: Responsive.isMobile(context)
+                ? Responsive.scale(context, min: 16, max: 25) : 25,
+            ),
+
             Wrap(
               spacing: 6,
               runSpacing: 6,
@@ -166,16 +182,17 @@ class _SkillsSectionState extends State<SkillsSection> {
       padding: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
       decoration: BoxDecoration(
         color: AppColors.appWhiteColor.withValues(alpha: 0.05),
-        borderRadius: BorderRadius.circular(7),
+        borderRadius: BorderRadius.circular(
+          Responsive.isMobile(context) ? Responsive.scale(context, min: 6, max: 8) : 7,
+        ),
         border: Border.all(color: AppColors.lightWhiteColor.withValues(alpha: 0.7), width: 0.4),
       ),
-      child: Text(
+      child: AppLabelTextView(
         title,
-        style: GoogleFonts.lato(
-          color: AppColors.lightWhiteColor.withValues(alpha: 0.8),
-          fontSize: 13,
-          fontWeight: FontWeight.w500,
-        ),
+        fontSize: Responsive.isMobile(context)
+            ? Responsive.scale(context, min: 8, max: 18) : 12,
+        fontWeight: FontWeight.w500,
+        textColor: AppColors.lightWhiteColor.withValues(alpha: 0.8),
       ),
     );
   }

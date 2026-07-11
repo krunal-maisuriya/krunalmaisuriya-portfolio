@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
 import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 import 'package:krunal_portfolio/core/utils/helper/social_link_helper.dart';
+import 'package:krunal_portfolio/core/widgets/app_label_text/app_label_text_view.dart';
 import 'package:krunal_portfolio/core/widgets/contact_me_hover_button.dart';
 
 class ContactSection extends StatelessWidget {
@@ -11,36 +12,45 @@ class ContactSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: Responsive.scale(context, min: 0, max: 40),),
+      padding: EdgeInsets.symmetric(
+        horizontal: Responsive.scale(context, min: 0, max: 40),
+      ),
       color: Color(0XFF121216),
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsetsGeometry.only(top: 20, bottom: 35, left: 25, right: 25),
-            child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.1),),
+            padding: EdgeInsetsGeometry.only(
+              top: 0, bottom: 35,
+              left: Responsive.isMobile(context)
+                  ? Responsive.scale(context, min: 5, max: 25) : 25,
+              right: Responsive.isMobile(context)
+                  ? Responsive.scale(context, min: 5, max: 25) : 25,
+            ),
+            child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.4),),
           ),
 
-          Text(
+          AppLabelTextView(
             "Get In Touch",
-            style: GoogleFonts.lato(
-              fontSize: Responsive.scale(context, min: 10, max: 40),
-              fontWeight: FontWeight.bold,
-              color: AppColors.appWhiteColor,
-            ),
+            fontSize: Responsive.isMobile(context)
+                ? Responsive.scale(context, min: 10, max: 40)
+                : 35,
+            fontWeight: FontWeight.bold,
+            textColor: AppColors.appWhiteColor,
           ),
 
           const SizedBox(height: 10),
-          Text(
+          AppLabelTextView(
             "I am always interested in new opportunities or projects. Feel free to contact me to work together.",
-            style: GoogleFonts.lato(
-              fontSize: Responsive.scale(context, min: 8, max: 18),
-              color: AppColors.greyColor,
-            ),
+            fontSize: Responsive.isMobile(context)
+                ? Responsive.scale(context, min: 5, max: 14)
+                : 14,
+            fontWeight: FontWeight.w500,
+            textColor: AppColors.greyColor,
             textAlign: TextAlign.center,
           ),
+
 
           //  Contact Info View
           Column(
@@ -54,8 +64,8 @@ class ContactSection extends StatelessWidget {
 
                   return Padding(
                     padding: EdgeInsets.only(
-                      left: Responsive.scale(context, min: 5, max: 40),
-                      right: Responsive.scale(context, min: 5, max: 40),
+                      left: Responsive.isMobile(context) ? 0 : Responsive.scale(context, min: 5, max: 40),
+                      right: Responsive.isMobile(context) ? 0 : Responsive.scale(context, min: 5, max: 40),
                       top: 0, bottom: 20,
                     ),
                     child: isDesktop
@@ -251,7 +261,7 @@ class ContactSection extends StatelessWidget {
   }
 
 
-  //  Contact Information
+  ///  Contact Information
   Widget _contactInformationView({
     required BuildContext context,
     required IconData icon,
@@ -259,34 +269,44 @@ class ContactSection extends StatelessWidget {
     required String value,
   }) {
     return Container(
-      padding: EdgeInsets.only(
-        left: Responsive.scale(context, min: 5, max: 25),
-        right: Responsive.scale(context, min: 5, max: 25),
-        top: Responsive.scale(context, min: 5, max: 15),
-        bottom: Responsive.scale(context, min: 5, max: 15),
+      padding: EdgeInsets.symmetric(
+        vertical: Responsive.isMobile(context)
+            ? Responsive.scale(context, min: 8, max: 15)
+            : Responsive.isTablet(context)
+              ? Responsive.scale(context, min: 8, max: 15)
+              : 15,
+        horizontal: Responsive.isMobile(context)
+            ? Responsive.scale(context, min: 5, max: 25)
+            : Responsive.isTablet(context)
+            ? 20 : 25,
       ),
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.greyColor.shade800.withValues(alpha: 0.8)),
-        borderRadius: BorderRadius.circular(Responsive.scale(context, min: 7, max: 10)),
+        borderRadius: BorderRadius.circular(
+          Responsive.isMobile(context) ? Responsive.scale(context, min: 7, max: 10) : 10,
+        ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
 
           Container(
-            width: Responsive.scale(context, min: 10, max: 45),
-            height: Responsive.scale(context, min: 10, max: 45),
+            width: Responsive.isMobile(context)
+                ? Responsive.scale(context, min: 10, max: 45) : 45,
+            height: Responsive.isMobile(context)
+                ? Responsive.scale(context, min: 10, max: 45) : 45,
             decoration: BoxDecoration(
               color: AppColors.cyanColor.withValues(alpha: 0.05),
               borderRadius: BorderRadius.circular(
-                Responsive.scale(context, min: 4, max: 10),
+                Responsive.isMobile(context)
+                    ? Responsive.scale(context, min: 4, max: 10) : 10,
               ),
               border: Border.all(color: AppColors.cyanColor, width: 0.5),
             ),
-            child: Icon(
-              icon,
+            child: Icon(icon,
               color: AppColors.cyanColor,
-              size: Responsive.scale(context, min: 8, max: 25),
+              size: Responsive.isMobile(context)
+                  ? Responsive.scale(context, min: 8, max: 25) : 26,
             ),
           ),
 
@@ -297,28 +317,26 @@ class ContactSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+                AppLabelTextView(
                   title,
+                  fontSize: Responsive.isMobile(context)
+                      ? Responsive.scale(context, min: 8, max: 15) : 13,
+                  fontWeight: FontWeight.w500,
+                  textColor: AppColors.appWhiteColor.withValues(alpha: 0.5),
                   softWrap: true,
                   overflow: TextOverflow.visible,
-                  style: GoogleFonts.lato(
-                    fontSize: Responsive.scale(context, min: 8, max: 13),
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.appWhiteColor.withValues(alpha: 0.5),
-                  ),
                 ),
 
                 GestureDetector(
                   onTap: () {},
-                  child: Text(
+                  child: AppLabelTextView(
                     value,
+                    fontSize: Responsive.isMobile(context)
+                        ? Responsive.scale(context, min: 7, max: 18) : 15,
+                    fontWeight: FontWeight.w800,
+                    textColor: AppColors.appWhiteColor,
                     softWrap: true,
                     overflow: TextOverflow.visible,
-                    style: GoogleFonts.lato(
-                      fontSize: Responsive.scale(context, min: 8, max: 15),
-                      fontWeight: FontWeight.w800,
-                      color: AppColors.appWhiteColor,
-                    ),
                   ),
                 ),
               ],
@@ -329,33 +347,31 @@ class ContactSection extends StatelessWidget {
     );
   }
 
-  //  Let's Work Together
+  ///  Let's Work Together
   Widget letsWorkTogether(BuildContext context) {
-    return Text(
+    return AppLabelTextView(
       "LET'S WORK TOGETHER",
-      style: GoogleFonts.lato(
-        fontSize: Responsive.scale(context, min: 8, max: 18),
-        fontWeight: FontWeight.w800,
-        color: AppColors.appWhiteColor,
-        letterSpacing: 2,
-      ),
+      fontSize: Responsive.isMobile(context)
+          ? Responsive.scale(context, min: 8, max: 18) : 18,
+      fontWeight: FontWeight.w800,
+      textColor: AppColors.appWhiteColor,
+      letterSpacing: 2,
     );
   }
 
-  //  Lets Work Desc
+  ///  Lets Work Desc
   Widget letsWorkTogetherDesc(BuildContext context) {
-    return Text(
+    return AppLabelTextView(
       "I'm available for Flutter and iOS development projects, app maintenance, feature enhancements, and technical consulting. "
           "Let's connect and create impactful mobile experiences.",
-      style: GoogleFonts.lato(
-        fontSize: Responsive.scale(context, min: 8, max: 15),
-        fontWeight: FontWeight.w400,
-        color: AppColors.appWhiteColor.withValues(alpha: 0.5),
-      ),
+      fontSize: Responsive.isMobile(context)
+          ? Responsive.scale(context, min: 8, max: 14) : 11,
+      fontWeight: FontWeight.w400,
+      textColor: AppColors.appWhiteColor.withValues(alpha: 0.5),
     );
   }
 
-  //  Contact Link
+  ///  Contact Link
   Widget socialContactLink(BuildContext context, String title, IconData icon) {
     return Container(
       alignment: Alignment.center,
@@ -376,22 +392,24 @@ class ContactSection extends StatelessWidget {
           FaIcon(
             icon,
             color: AppColors.lightWhiteColor,
-            size: Responsive.scale(context, min: 7, max: 18),
+            size: Responsive.isMobile(context)
+                ? Responsive.scale(context, min: 7, max: 18) : 18,
           ),
 
-          SizedBox(width: Responsive.scale(context, min: 2, max: 12),),
+          SizedBox(width: Responsive.isMobile(context)
+              ? Responsive.scale(context, min: 2, max: 12) : 10,
+          ),
 
           Flexible(
-            child: Text(
+            child: AppLabelTextView(
               title,
+              fontSize: Responsive.isMobile(context)
+                  ? Responsive.scale(context, min: 5.5, max: 15) : 13,
+              fontWeight: FontWeight.w600,
+              textColor: AppColors.lightWhiteColor,
               maxLines: 5,
               softWrap: true,
               overflow: TextOverflow.ellipsis,
-              style: GoogleFonts.lato(
-                fontSize: Responsive.scale(context, min: 5.5, max: 15),
-                fontWeight: FontWeight.w600,
-                color: AppColors.lightWhiteColor,
-              ),
             ),
           ),
         ],

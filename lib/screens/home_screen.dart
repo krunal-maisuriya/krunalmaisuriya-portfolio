@@ -1,14 +1,14 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
 import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 import 'package:krunal_portfolio/core/utils/helper/social_link_helper.dart';
+import 'package:krunal_portfolio/core/widgets/app_label_text/app_label_text_view.dart';
 import 'package:krunal_portfolio/screens/header_view.dart';
 import 'package:krunal_portfolio/sections/contact_section.dart';
 import 'package:krunal_portfolio/sections/copy_right_section.dart';
 import 'package:krunal_portfolio/sections/experience_section.dart';
-import 'package:krunal_portfolio/sections/hero_sections.dart';
+import 'package:krunal_portfolio/sections/profile/hero_sections.dart';
 import 'package:krunal_portfolio/sections/projects_section.dart';
 import 'package:krunal_portfolio/sections/skills_section.dart';
 
@@ -49,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,9 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
               spacing: 0,
               children: [
                 Container(key: homeKey, child: HeroSections()),
-                // Container(key: experienceKey, child: ExperienceSection()),
+                Container(key: experienceKey, child: ExperienceSection()),
                 Container(key: skillsKey, child: SkillsSection()),
-                // Container(key: projectsKey, child: ProjectsSection()),
+                Container(key: projectsKey, child: ProjectsSection()),
                 Container(key: contactKey, child: ContactSection()),
                 CopyRightSection(),
               ],
@@ -95,18 +96,16 @@ class _HomeScreenState extends State<HomeScreen> {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
         child: Container(
-          height: 90,
+          height: Responsive.isMobile(context) ? 70 : 90,
           padding: EdgeInsets.symmetric(horizontal: Responsive.scale(context, min: 6, max: 30)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              AppLabelTextView(
                 "Krunal",
-                style: GoogleFonts.lato(
-                  fontSize: Responsive.scale(context, min: 8, max: 28),
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.appWhiteColor,
-                ),
+                fontSize: Responsive.scale(context, min: 8, max: 28),
+                fontWeight: FontWeight.bold,
+                textColor: AppColors.appWhiteColor,
               ),
 
               if (width >= 650)
@@ -115,23 +114,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     HeaderNavView(onTap: (index) => _handleTap(index)),
                     const SizedBox(width: 15,),
 
-                    hireMeNavView(),
+                    SizedBox(
+                      height: 37,
+                      child: hireMeNavView(),
+                    ),
                   ],
                 )
               else
-                if (width > 100)
-                  IconButton(
-                  icon: Icon(
+                GestureDetector(
+                  onTap: () => setState(() => isMenuOpen = !isMenuOpen),
+                  child: Icon(
                     isMenuOpen ? Icons.close : Icons.menu,
                     color: AppColors.appWhiteColor,
-                    size: Responsive.scale(context, min: width < 100 ? 8 : 15, max: 35),
+                    size: Responsive.scale(context, min: 10, max: 35),
                   ),
-                  onPressed: () {
-                    setState(() => isMenuOpen = !isMenuOpen);
-                  },
-                )
-                else
-                  SizedBox(),
+                ),
             ],
           ),
         ),
@@ -146,7 +143,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      height: isMenuOpen ? (width >= 650) ? 0 : Responsive.scale(context, min: 230, max: 370) : 0,
+      height: isMenuOpen
+          ? (width >= 650)
+            ? 0 : Responsive.scale(context, min: 230, max: 370) : 0,
       width: double.infinity,
       child: ClipRect(
         child: Container(
@@ -189,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: Responsive.scale(context, min: 7, max: 12),),
+        padding: EdgeInsets.symmetric(vertical: Responsive.scale(context, min: 5, max: 12),),
         decoration: BoxDecoration(
           color: selectedVIndex == index
               ? AppColors.cyanColor.shade300.withValues(alpha: 0.15)
@@ -206,13 +205,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
             SizedBox(width: Responsive.scale(context, min: 8, max: 35),),
 
-            Text(
+            AppLabelTextView(
               title,
-              style: GoogleFonts.lato(
-                color: AppColors.appWhiteColor,
-                fontSize: Responsive.scale(context, min: 6, max: 25),
-                fontWeight: FontWeight.w700,
-              ),
+              fontSize: Responsive.isMobile(context)
+                  ? Responsive.scale(context, min: 6, max: 16) : 13,
+              fontWeight: FontWeight.w700,
+              textColor: AppColors.appWhiteColor,
             ),
           ],
         ),
@@ -220,6 +218,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+
+  /// Hire me Button
   Widget hireMeNavView() {
     final width = MediaQuery.of(context).size.width;
 
@@ -236,24 +236,20 @@ class _HomeScreenState extends State<HomeScreen> {
           border: Border.all(color: AppColors.cyanColor.shade800, width: 1.0),
           color: AppColors.cyanColor.shade800,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              "Hire me",
-              style: GoogleFonts.lato(
-                fontSize: Responsive.scale(context, min: (width >= 650) ? 10 : 7, max: (width >= 650) ? 13 : 13),
-                fontWeight: FontWeight.w800,
-                color: AppColors.appWhiteColor,
-              ),
-            ),
-          ],
+        child: Center(
+          child: AppLabelTextView(
+            "Hire me",
+            fontSize: Responsive.isMobile(context) 
+                ? Responsive.scale(context, min: 7, max: 20)
+                : 12,
+            fontWeight: FontWeight.w800,
+            textColor: AppColors.appWhiteColor,
+          ),
         ),
       ),
     );
   }
+
 
   void _handleTap(int index) {
     switch (index) {

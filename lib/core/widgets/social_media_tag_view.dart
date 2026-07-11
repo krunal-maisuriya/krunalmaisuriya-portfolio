@@ -9,14 +9,27 @@ class SocialMediaTagView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
-      padding: EdgeInsets.all(Responsive.scale(context, min: 2, max: 15)),
+      padding: EdgeInsets.all(
+        Responsive.isMobile(context)
+            ? Responsive.scale(context, min: 2, max: 15)
+            : 12,
+      ),
       decoration: BoxDecoration(
         color: AppColors.lightBlackColor,
-        borderRadius: BorderRadius.circular(Responsive.scale(context, min: 5, max: 10)),
-        border: Border.all(color: AppColors.greyColor.shade400, width: 0.3)
+        border: Border.all(color: AppColors.greyColor.shade400, width: 0.3),
+        borderRadius: BorderRadius.circular(
+          Responsive.scale(context, min: 5, max: 10),
+        ),
       ),
-      child: FaIcon(icons, color: AppColors.appWhiteColor, size: Responsive.scale(context, min: 4, max: 25)),
+      child: FaIcon(
+        icons,
+        color: AppColors.appWhiteColor,
+        size: Responsive.isMobile(context)
+            ? Responsive.scale(context, min: 4, max: 25)
+            : 18,
+      ),
     );
   }
 }

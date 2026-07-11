@@ -1,59 +1,89 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
+import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
+import 'package:krunal_portfolio/core/widgets/app_label_text/app_label_text_view.dart';
 import 'package:krunal_portfolio/core/widgets/section_title_view.dart';
 
 class ExperienceSection extends StatelessWidget {
   ExperienceSection({super.key});
 
-  final List<String> zapPowerExperience = [
-    "Research on battery features & data's and working on developing a driver and customer mobile application in Swift & Flutter from scratch.",
-    "We are fetching live battery data from firebase and showing it on the customer app. Also fetching real time truck battery data and driver location.",
-    "Used google map to show assigned live driver location on customer app.",
+  final List<Map<String, dynamic>> experiencesData = [
+    {
+      "company_name": "ZAP Power FZCO",
+      "position": "iOS & Flutter App Developer",
+      "present_year": "July 2023 - Present",
+      "location": "Dubai, UAE",
+      "experience": [
+        "Research on battery features & data's and working on developing a driver and customer mobile application in Swift & Flutter from scratch.",
+        "We are fetching live battery data from firebase and showing it on the customer app. Also fetching real time truck battery data and driver location.",
+        "Used google map to show assigned live driver location on customer app.",
+      ],
+      "used_languages": ["SwiftUI", "Flutter", "MVVM", "Dio", "Riverpod", "Provider", "Firebase", "Charts", "Stripe", ],
+    },
+    {
+      "company_name": "Tecocraft Infusion PVT LTD",
+      "position": "Sr. iOS Application Developer",
+      "present_year": "August 2020 – May 2023",
+      "location": "India, Surat",
+      "experience": [
+        "Designed and developed multiple applications using Swift & SwiftUI.",
+        "Worked on product base & client base project in an iOS platform. And creating applications based on customer demands, trends and market gaps.",
+        "Implemented hardware sensor activation with Libre2 Sensor.",
+        "Used MVC, MVVM design pattern, Realm database, Firebase for chatting, push notifications and storing auth credentials, Payment gateways (Apple pay, Stripe).",
+        "Optimization and migration of Core Data.",
+      ],
+      "used_languages": ["SwiftUI", "MVVM", "MVC", "Socket.io", "BLE", "Hardware Activation", "Charts", "Stripe", "Combine", ],
+    },
+    {
+      "company_name": "Varshaa WebLabs",
+      "position": "iOS Application Developer",
+      "present_year": "March 2018 – August 2020",
+      "location": "India, Surat",
+      "experience": [
+        "Designed and developed multiple applications using Swift & Flutter.",
+        "Planned, researched and developed program logic and code tests.",
+        "Collaborated with design teams to effectively meet development requirements and enhance user experiences.",
+        "Maintaining, optimizing, troubleshooting, improving and implementing new features in the app.",
+        "Used MVC design pattern, Realm database, Firebase for chatting, push notifications and Payment gateways (Payumoney, Stripe, Paypal).",
+        "Learned how to upload applications on the app store.",
+      ],
+      "used_languages": ["Swift", "UIKit", "Flutter", "Dio", "MVC", "MVVM", "Firebase", "Charts", "Stripe", "Analytics"],
+    },
+    {
+      "company_name": "BrainWaves",
+      "position": "Jr. iOS Application Developer",
+      "present_year": "November 2017 – February 2018",
+      "location": "India, Surat",
+      "experience": [
+        "I worked with swift language.",
+        "Learned with Apple UI/UX pattern.",
+        "Learned MVC coding structure and project structure.",
+      ],
+      "used_languages": ["Swift", "UIKit", "MVC", "Alamofire"],
+    },
   ];
 
-  final List<String> tecoCraftExperience = [
-    "Designed and developed multiple applications using Swift & SwiftUI.",
-    "Worked on product base & client base project in an iOS platform. And creating applications based on customer demands, trends and market gaps.",
-    "Implemented hardware sensor activation with Libre2 Sensor.",
-    "Used MVC, MVVM design pattern, Realm database, Firebase for chatting, push notifications and storing auth credentials, Payment gateways (Apple pay, Stripe).",
-    "Optimization and migration of Core Data.",
-  ];
-
-  final List<String> varshaWebLabsExperience = [
-    "Designed and developed multiple applications using Swift & Flutter.",
-    "Planned, researched and developed program logic and code tests.",
-    "Collaborated with design teams to effectively meet development requirements and enhance user experiences.",
-    "Maintaining, optimizing, troubleshooting, improving and implementing new features in the app.",
-    "Used MVC design pattern, Realm database, Firebase for chatting, push notifications and Payment gateways (Payumoney, Stripe, Paypal).",
-    "Learned how to upload applications on the app store.",
-  ];
-
-  final List<String> brainWavesExperience = [
-    "I worked with swift language.",
-    "Learned with Apple UI/UX pattern.",
-    "Learned MVC coding structure and project structure.",
-  ];
-
-  final List<String> zapPowerUsedLanguages = ["SwiftUI", "Flutter", "MVVM", "Dio", "Riverpod", "Provider", "Firebase", "Charts", "Stripe", ];
-  final List<String> tecoCraftUsedLanguages = ["SwiftUI", "MVVM", "MVC", "Socket.io", "BLE", "Hardware Activation", "Charts", "Stripe", "Combine", ];
-  final List<String> varshaWebLabsUsedLanguages = ["Swift", "UIKit", "Flutter", "Dio", "MVC", "MVVM", "Firebase", "Charts", "Stripe", "Analytics"];
-  final List<String> brainWavesUsedLanguages = ["Swift", "UIKit", "MVC", "Alamofire"];
 
   @override
   Widget build(BuildContext context) {
 
     return Container(
-      padding: const EdgeInsets.only(left: 40, right: 40, bottom: 60),
-      // color: AppColors.littleBlackColor,
+      padding: EdgeInsets.only(
+        left: Responsive.scale(context, min: 5, max: 40),
+        right: Responsive.scale(context, min: 5, max: 40),
+        bottom: 60,
+      ),
       color: Color(0XFF121216),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 12,
         children: [
           Padding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: 15),
-            child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.1),),
+            padding: EdgeInsetsGeometry.symmetric(
+              horizontal: Responsive.isMobile(context)
+                  ? Responsive.scale(context, min: 5, max: 25) : 25,
+            ),
+            child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.4),),
           ),
 
           // SECTION TITLE
@@ -63,12 +93,9 @@ class ExperienceSection extends StatelessWidget {
             padding: EdgeInsetsGeometry.only(left: 5),
             child: Column(
               spacing: 30,
-              children: [
-                zapPowerExperienceView(),
-                tecoCraftInfusionExperienceView(),
-                varshaWebLabsExperienceView(),
-                brainWavesExperienceView(),
-              ],
+              children: experiencesData.map((experience) =>
+                  companyExperienceView(context, experience: experience))
+                  .toList(),
             ),
           ),
         ],
@@ -77,81 +104,96 @@ class ExperienceSection extends StatelessWidget {
   }
 
   //  Company Experience
-  Widget zapPowerExperienceView() {
+  Widget companyExperienceView(BuildContext context, {required Map<String, dynamic> experience}) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 5,
       children: [
-        _companyNameView(companyName: "ZAP Power FZCO", year: "July 2023 - Present"),
-        const SizedBox(height: 3,),
-        _designationLocationView(designation: "iOS & Flutter App Developer", location: "Dubai, UAE"),
+        if (Responsive.isMobile(context))
+          _buildMobileLayout(context,
+            companyName: experience["company_name"],
+            position: experience["position"],
+            year: experience["present_year"],
+            location: experience["location"],
+          )
+        else
+          _buildDesktopLayout(context,
+            companyName: experience["company_name"],
+            position: experience["position"],
+            year: experience["present_year"],
+            location: experience["location"],
+          ),
 
-        const SizedBox(height: 15,),
-        _commonExperienceView(experience: zapPowerExperience, usedLanguages: zapPowerUsedLanguages),
+        SizedBox(height: Responsive.isMobile(context) ? 0 : 5,),
+        _commonExperienceView(context, experience: experience["experience"], usedLanguages: experience["used_languages"]),
       ],
     );
   }
 
-  Widget tecoCraftInfusionExperienceView() {
+  /// Company & Position Mobile Layout
+  Widget _buildDesktopLayout(BuildContext context, {
+    required String companyName,
+    required String position,
+    required String year,
+    required String location,
+  }) {
     return Column(
       children: [
-        _companyNameView(companyName: "Tecocraft Infusion PVT LTD", year: "August 2020 – May 2023"),
+        _companyNameYearView(context, companyName: companyName, year: year),
         const SizedBox(height: 3,),
-        _designationLocationView(designation: "Sr. iOS Application Developer", location: "Surat, India"),
-
-        const SizedBox(height: 15,),
-        _commonExperienceView(experience: tecoCraftExperience, usedLanguages: tecoCraftUsedLanguages),
+        _designationLocationView(designation: position, location: location),
       ],
     );
   }
 
-  Widget varshaWebLabsExperienceView() {
+
+  /// Company & Position Mobile Layout
+  Widget _buildMobileLayout(BuildContext context, {
+    required String companyName,
+    required String position,
+    required String year,
+    required String location,
+  }) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _companyNameView(companyName: "Varshaa WebLabs", year: "March 2018 – August 2020"),
+        _companyNameView(context,
+          companyName: companyName,
+          fontSize: Responsive.scale(context, min: 15, max: 30),
+        ),
         const SizedBox(height: 3,),
-        _designationLocationView(designation: "iOS Application Developer", location: "Surat, India"),
 
-        const SizedBox(height: 15,),
-        _commonExperienceView(experience: varshaWebLabsExperience, usedLanguages: varshaWebLabsUsedLanguages),
-      ],
-    );
-  }
+        _designationView(context,
+          designation: position,
+          fontSize: Responsive.isMobile(context)
+              ? Responsive.scale(context, min: 12, max: 22) : 14,
+        ),
 
-  Widget brainWavesExperienceView() {
-    return Column(
-      children: [
-        _companyNameView(companyName: "BrainWaves", year: "November 2017 – February 2018"),
-        const SizedBox(height: 3,),
-        _designationLocationView(designation: "Jr. iOS Application Developer", location: "Surat, India"),
-
-        const SizedBox(height: 15,),
-        _commonExperienceView(experience: brainWavesExperience, usedLanguages: brainWavesUsedLanguages),
+        _yearLocationView(context,
+          year: year,
+          location: location,
+          fontSize: Responsive.isMobile(context)
+              ? Responsive.scale(context, min: 8, max: 15) : 12,
+        ),
       ],
     );
   }
 
   /// Company Name & Year View
-  Widget _companyNameView({required String companyName, required String year}) {
+  Widget _companyNameYearView(BuildContext context, {required String companyName, required String year}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          companyName,
-          style: GoogleFonts.lato(
-            fontSize: 17,
-            fontWeight: FontWeight.w900,
-            color: AppColors.appWhiteColor,
-          ),
-          textAlign: TextAlign.left,
+        _companyNameView(context,
+          companyName: companyName,
+          fontSize: Responsive.isMobile(context)
+            ? Responsive.scale(context, min: 10, max: 21) : 17,
         ),
 
-        Text(
-          year,
-          style: GoogleFonts.lato(
-            fontSize: 12,
-            fontWeight: FontWeight.w700,
-            color: AppColors.greyColor,
-          ),
-          textAlign: TextAlign.left,
+        _yearView(context,
+          year: year,
+          fontSize: Responsive.isMobile(context)
+            ? Responsive.scale(context, min: 8, max: 14) : 12,
         ),
       ],
     );
@@ -162,23 +204,19 @@ class ExperienceSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
+        AppLabelTextView(
           designation,
-          style: GoogleFonts.lato(
-            fontSize: 14,
-            fontWeight: FontWeight.w700,
-            color: AppColors.cyanColor.shade200,
-          ),
+          fontSize: 14,
+          fontWeight: FontWeight.w700,
+          textColor: AppColors.cyanColor.shade200,
           textAlign: TextAlign.left,
         ),
 
-        Text(
+        AppLabelTextView(
           location,
-          style: GoogleFonts.lato(
-            fontSize: 13,
-            fontWeight: FontWeight.w700,
-            color: AppColors.greyColor.shade700,
-          ),
+          fontSize: 13,
+          fontWeight: FontWeight.w700,
+          textColor: AppColors.greyColor.shade700,
           textAlign: TextAlign.left,
         ),
       ],
@@ -186,7 +224,7 @@ class ExperienceSection extends StatelessWidget {
   }
 
   /// Common Experience View
-  Widget _commonExperienceView({required List<String> experience, required List<String> usedLanguages}) {
+  Widget _commonExperienceView(BuildContext context, {required List<String> experience, required List<String> usedLanguages}) {
     return Container(
       alignment: Alignment.topLeft,
       decoration: BoxDecoration(
@@ -200,27 +238,42 @@ class ExperienceSection extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
-        padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 15),
+        padding: EdgeInsets.all(
+          Responsive.isMobile(context)
+              ? Responsive.scale(context, min: 7, max: 20) : 20,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 5,
               children: experience.map((data) => Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  CircleAvatar(backgroundColor: AppColors.cyanColor, maxRadius: 3,),
-                  const SizedBox(width: 10,),
+
+                  //  Dot Circle
+                  Padding(
+                    padding: const EdgeInsets.only(top: 6),
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.cyanColor,
+                      radius: 3,
+                    ),
+                  ),
+
+                  SizedBox(
+                    width: Responsive.isMobile(context)
+                        ? Responsive.scale(context, min: 7, max: 10) : 10,
+                  ),
+
                   Expanded(
-                    child: Text(
+                    child: AppLabelTextView(
                       data,
-                      style: GoogleFonts.lato(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.appWhiteColor.withValues(alpha: 0.6),
-                      ),
+                      fontSize: Responsive.isMobile(context)
+                          ? Responsive.scale(context, min: 11.5, max: 18.5) : 13,
+                      fontWeight: FontWeight.w400,
+                      textColor: AppColors.appWhiteColor.withValues(alpha: 0.6),
                       textAlign: TextAlign.left,
                       overflow: TextOverflow.visible,
                       softWrap: true,
@@ -235,7 +288,7 @@ class ExperienceSection extends StatelessWidget {
                 spacing: 6,
                 runSpacing: 6,
                 children: usedLanguages
-                    .map((data) => _usedLanguagesView(title: data))
+                    .map((data) => _usedLanguagesView(context, title: data))
                     .toList(),
               ),
             ],
@@ -244,24 +297,69 @@ class ExperienceSection extends StatelessWidget {
     );
   }
 
+  /// Company Name
+  Widget _companyNameView(BuildContext context, {required String companyName, required double fontSize}) {
+    return AppLabelTextView(
+      companyName,
+      fontSize: fontSize,
+      fontWeight: FontWeight.w900,
+      textColor: AppColors.appWhiteColor,
+      textAlign: TextAlign.left,
+    );
+  }
+
+  /// Designation
+  Widget _designationView(BuildContext context, {required String designation, required double fontSize}) {
+    return AppLabelTextView(
+      designation,
+      fontSize: fontSize,
+      fontWeight: FontWeight.w700,
+      textColor: AppColors.cyanColor.shade200,
+      textAlign: TextAlign.left,
+    );
+  }
+
+  /// Year View
+  Widget _yearView(BuildContext context, {required String year, required double fontSize}) {
+    return AppLabelTextView(
+      year,
+      fontSize: fontSize,
+      fontWeight: FontWeight.w700,
+      textColor: AppColors.greyColor,
+      textAlign: TextAlign.left,
+    );
+  }
+
+  /// Year Location View
+  Widget _yearLocationView(BuildContext context, {required String year, required String location, required double fontSize}) {
+    return AppLabelTextView(
+      "$year  |  $location",
+      fontSize: fontSize,
+      fontWeight: FontWeight.w700,
+      textColor: AppColors.greyColor,
+      textAlign: TextAlign.left,
+    );
+  }
 
   ///  Used Language View
-  Widget _usedLanguagesView({required String title}) {
+  Widget _usedLanguagesView(BuildContext context, {required String title}) {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.appBlackColor,
         border: Border.all(color: AppColors.cyanColor.withValues(alpha: 0.2), width: 0.7),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(
+          Responsive.isMobile(context)
+              ? Responsive.scale(context, min: 6, max: 10) : 10,
+        ),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-        child: Text(
+        child: AppLabelTextView(
           title,
-          style: GoogleFonts.lato(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: AppColors.appWhiteColor.withValues(alpha: 0.6),
-          ),
+          fontSize: Responsive.isMobile(context)
+              ? Responsive.scale(context, min: 8, max: 15) : 12,
+          fontWeight: FontWeight.w400,
+          textColor: AppColors.appWhiteColor.withValues(alpha: 0.6),
           textAlign: TextAlign.left,
           overflow: TextOverflow.visible,
           softWrap: true,

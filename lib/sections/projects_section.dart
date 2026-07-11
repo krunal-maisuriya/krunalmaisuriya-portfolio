@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
+import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
+import 'package:krunal_portfolio/core/widgets/app_label_text/app_label_text_view.dart';
 import 'package:krunal_portfolio/core/widgets/section_title_view.dart';
 import 'package:krunal_portfolio/models/product_model.dart';
 import 'package:krunal_portfolio/screens/tags_view.dart';
@@ -124,18 +125,25 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 40, right: 40, bottom: 50),
-      // color: AppColors.littleBlackColor,
+      padding: EdgeInsets.only(
+        left: Responsive.scale(context, min: 5, max: 40),
+        right: Responsive.scale(context, min: 5, max: 40),
+        bottom: 50,
+      ),
       color: Color(0XFF121216),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: 25),
-            child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.1),),
+            padding: EdgeInsetsGeometry.symmetric(
+              horizontal: Responsive.isMobile(context)
+                  ? Responsive.scale(context, min: 5, max: 25) : 25,
+            ),
+            child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.4),),
           ),
 
           // SECTION TITLE
-          const SizedBox(height: 20),
+          const SizedBox(height: 30),
           SectionTitleView(title: "Projects", textColor: AppColors.appWhiteColor,),
           const SizedBox(height: 10),
 
@@ -144,7 +152,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
             final width = constraints.maxWidth;
             int columns;
 
-            if (width <600) {
+            if (width < 600) {
               columns = 1;
             } else if (width < 1000) {
               columns = 2; // tablet
@@ -173,7 +181,10 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   }
 
   //  Projects Data section
-  Widget _projectsDataView({required int index, required ProjectModel data}) {
+  Widget _projectsDataView({
+    required int index,
+    required ProjectModel data,
+  }) {
     final bool isHover = hoverIndex == index;
 
     return MouseRegion(
@@ -187,7 +198,11 @@ class _ProjectsSectionState extends State<ProjectsSection> {
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
         constraints: const BoxConstraints(minHeight: 320),
-        padding: const EdgeInsets.only(left: 16, right: 16, top: 15, bottom: 10),
+        padding: EdgeInsets.only(
+          top: 15, bottom: 10,
+          left: Responsive.isMobile(context) ? Responsive.scale(context, min: 5, max: 16) : 16,
+          right: Responsive.isMobile(context) ? Responsive.scale(context, min: 5, max: 16) : 16,
+        ),
         width: double.infinity,
         transform: isHover
             ? Matrix4.translationValues(0, -3, 0)
@@ -206,85 +221,134 @@ class _ProjectsSectionState extends State<ProjectsSection> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // TITLE
-            Text(
-              data.appName,
-              style: GoogleFonts.lato(
-                fontSize: 17,
-                fontWeight: FontWeight.bold,
-                color: AppColors.cyanColor.shade400,
-              ),
-            ),
-            const SizedBox(height: 15,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: AppLabelTextView(
+                    data.appName,
+                    fontSize: Responsive.isMobile(context)
+                        ? Responsive.scale(context, min: 13, max: 24) : 17,
+                    fontWeight: FontWeight.bold,
+                    textColor: AppColors.cyanColor.shade400,
+                  ),
+                ),
 
-            Text(
-              data.description,
-              style: GoogleFonts.lato(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: AppColors.appWhiteColor.withValues(alpha: 0.7),
-              ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (data.githubLink.isNotEmpty)
+                      GestureDetector(
+                        onTap: () => openUrl(data.githubLink),
+                        child: const FaIcon(FontAwesomeIcons.github),
+                      ),
+
+                    if (data.githubLink.isNotEmpty &&
+                        (data.iosAppLink.isNotEmpty ||
+                            data.androidAppLink.isNotEmpty))
+                      const SizedBox(width: 8),
+
+                    if (data.iosAppLink.isNotEmpty)
+                      GestureDetector(
+                        onTap: () => openUrl(data.iosAppLink),
+                        child: Image.asset(
+                          "assets/ic_appstore.jpeg",
+                          width: Responsive.isMobile(context)
+                              ? Responsive.scale(context, min: 10, max: 24) : 22,
+                          height: Responsive.isMobile(context)
+                              ? Responsive.scale(context, min: 10, max: 24) : 22,
+                        ),
+                      ),
+
+                    if (data.iosAppLink.isNotEmpty &&
+                        data.androidAppLink.isNotEmpty)
+                      const SizedBox(width: 8),
+
+                    if (data.androidAppLink.isNotEmpty)
+                      GestureDetector(
+                        onTap: () => openUrl(data.androidAppLink),
+                        child: Image.asset(
+                          "assets/ic_playstore.jpeg",
+                          width: Responsive.isMobile(context)
+                              ? Responsive.scale(context, min: 10, max: 22) : 20,
+                          height: Responsive.isMobile(context)
+                              ? Responsive.scale(context, min: 10, max: 22) : 20,
+                        ),
+                      ),
+                  ],
+                ),
+              ],
             ),
+
+            SizedBox(height: Responsive.isMobile(context)
+                ? Responsive.scale(context, min: 16, max: 25) : 20,
+            ),
+
+            AppLabelTextView(
+              data.description,
+              fontSize: Responsive.isMobile(context)
+                  ? Responsive.scale(context, min: 11, max: 18) : 13,
+              fontWeight: FontWeight.w400,
+              textColor: AppColors.appWhiteColor.withValues(alpha: 0.5),
+            ),
+
             const SizedBox(height: 20,),
 
             //  Tags
             Wrap(
-              spacing: 6, runSpacing: 6,
-              children: data.tags.map((tag) => TagsView(title: tag)).toList(),
+              spacing: 6,
+              runSpacing: 6,
+              children: data.tags
+                  .map((tag) => TagsView(title: tag))
+                  .toList(),
             ),
 
             const SizedBox(height: 25,),
+            // Spacer(),
 
-            Row(
-              spacing: 8,
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                  decoration: BoxDecoration(
-                    color: data.projectStatus == "Completed"
-                        ? AppColors.darkGreenColor.withValues(alpha: 0.1)
-                        : data.projectStatus == "In Progress"
-                        ? AppColors.orangeColor.withValues(alpha: 0.05)
-                        : AppColors.lightBlackColor.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      width: 0.5,
-                      color: data.projectStatus == "Completed"
-                          ? AppColors.darkGreenColor
-                          : data.projectStatus == "In Progress"
-                          ? AppColors.orangeColor : AppColors.lightWhiteColor.withValues(alpha: 0.8),
-                    ),
-                  ),
-                  child: Text(
-                    data.projectStatus,
-                    style: GoogleFonts.lato(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.appWhiteColor.withValues(alpha: 0.7),
-                    ),
-                  ),
-                ),
-
-                Spacer(),
-
-                if (data.githubLink.isNotEmpty)
-                  GestureDetector(
-                    onTap: () => openUrl(data.githubLink),
-                    child: FaIcon(FontAwesomeIcons.github, color: AppColors.appWhiteColor,),
-                  ),
-
-                if (data.iosAppLink.isNotEmpty)
-                  GestureDetector(
-                    onTap: () => openUrl(data.iosAppLink),
-                    child: Image.asset("assets/ic_appstore.jpeg", width: 22, height: 22,),
-                  ),
-
-                if (data.androidAppLink.isNotEmpty)
-                  GestureDetector(
-                    onTap: () => openUrl(data.androidAppLink),
-                    child: Image.asset("assets/ic_playstore.jpeg", width: 20, height: 20,),
-                  ),
-              ],
-            ),
+            // Row(
+            //   spacing: 8,
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   crossAxisAlignment: CrossAxisAlignment.center,
+            //   children: [
+            //     Expanded(
+            //       child: Align(
+            //         alignment: Alignment.centerLeft,
+            //         child: Container(
+            //           padding: EdgeInsets.symmetric(
+            //             vertical: 5,
+            //             horizontal: Responsive.isMobile(context)
+            //                 ? Responsive.scale(context, min: 5, max: 15) : 15,
+            //           ),
+            //           decoration: BoxDecoration(
+            //             color: data.projectStatus == "Completed"
+            //                 ? AppColors.darkGreenColor.withValues(alpha: 0.1)
+            //                 : data.projectStatus == "In Progress"
+            //                 ? AppColors.orangeColor.withValues(alpha: 0.05)
+            //                 : AppColors.lightBlackColor.withValues(alpha: 0.1),
+            //             borderRadius: BorderRadius.circular(12),
+            //             border: Border.all(
+            //               width: 0.5,
+            //               color: data.projectStatus == "Completed"
+            //                   ? AppColors.darkGreenColor
+            //                   : data.projectStatus == "In Progress"
+            //                   ? AppColors.orangeColor : AppColors.lightWhiteColor.withValues(alpha: 0.8),
+            //             ),
+            //           ),
+            //           child: AppLabelTextView(
+            //             data.projectStatus,
+            //             fontSize: Responsive.isMobile(context)
+            //                 ? Responsive.scale(context, min: 6, max: 18) : 12,
+            //             fontWeight: FontWeight.w400,
+            //             textColor: AppColors.appWhiteColor.withValues(alpha: 0.7),
+            //             softWrap: true,
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ),
