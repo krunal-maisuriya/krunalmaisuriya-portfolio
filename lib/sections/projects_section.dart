@@ -27,7 +27,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       iosAppLink: "",
       androidAppLink: "",
       githubLink: "",
-      projectStatus: "In Progress",
+      projectStatus: "Under Development",
     ),
     ProjectModel(
       appName: "Zap Power App (Customer)",
@@ -38,7 +38,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       iosAppLink: "",
       androidAppLink: "",
       githubLink: "",
-      projectStatus: "In Progress",
+      projectStatus: "Under Development",
     ),
     // Project(
     //   appName: "Zap Driver App",
@@ -48,57 +48,8 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     //   iosAppLink: "https://apps.apple.com/us/app/firmpet-app/id1641636133",
     //   androidAppLink: "",
     //   githubLink: "",
-    //   projectStatus: "Hold",
+    //   projectStatus: "Under Development",
     // ),
-    ProjectModel(
-      appName: "FirmPet",
-      description: "FirmPet is an advanced Health Monitoring App with curated features for pet health. "
-          "Built a SwiftUI-based pet health monitoring application with Libre2 sensor integration, custom analytics charts, and multi-pet profile management. "
-          "Implemented personalized data tracking and doctor assignment features to enhance pet healthcare management.",
-      // description: "FirmPet is an advanced Health Monitoring App with curated features for pet health. "
-      //     "A uniquely designed app dedicated to offering a better lifestyle to pets and pet's daily activities as per the logs maintained to avoid long-term health risks.",
-      image: "",
-      tags: ["SwiftUI", "MVVM", "Firebase", "Charts", "URLSession", "Encryption/Decryption", "Combine", "Hardware Sensor Activation", "Youtube Player"],
-      iosAppLink: "https://apps.apple.com/us/app/firmpet-app/id1641636133",
-      androidAppLink: "",
-      githubLink: "",
-      projectStatus: "Completed",
-    ),
-    ProjectModel(
-      appName: "My Virtual Business Card",
-      description: "MVBC is the best online business card offering an innovative platform to manage your professional business cards on your mobile phone. "
-          "Client can scanned and stored traditional business cards in the app and share business card with colleagues. "
-          "Implemented In-app purchase integration, a user-friendly chat system and sharing business card on social media.",
-      image: "",
-      tags: ["Swift", "MVVM", "Firebase", "Chatting", "In-app purchase", "Barcode Scanner"],
-      iosAppLink: "https://apps.apple.com/us/app/my-virtual-business-card/id1544764504",
-      androidAppLink: "",
-      githubLink: "",
-      projectStatus: "Completed",
-    ),
-    ProjectModel(
-      appName: "ParkForU - Driver",
-      description: "Designed and developed the driver-side application for an airport valet and transportation service, enabling drivers to efficiently manage pickup and drop-off operations. "
-          "Implemented secure trip management, ride acceptance workflows, manage online/offline availability status and driver shift tracking. "
-          "Focused on delivering a reliable and seamless experience for drivers while improving overall operational efficiency.",
-      image: "",
-      tags: ["Swift", "UIKit", "Firebase", "Alamofire", "MVC", "Rest API", "Push Notification", "Payment Integration"],
-      iosAppLink: "",
-      androidAppLink: "",
-      githubLink: "",
-      projectStatus: "Completed",
-    ),
-    ProjectModel(
-      appName: "Score Ice - Hockey",
-      description: "Developed and enhanced a hockey arena booking platform where arena managers create playing slots and users can discover and book available hockey sessions. "
-          "Implemented advanced slot filtering, map-based slot discovery and resolved critical issues to improve performance and user experience.",
-      image: "",
-      tags: ["Swift", "UIKit", "MVVM", "Rest API", "Fastlane", "Firebase", "Stripe", "FSCalendar", "Google Maps"],
-      iosAppLink: "https://apps.apple.com/us/app/score-ice/id1424884700",
-      androidAppLink: "",
-      githubLink: "",
-      projectStatus: "Completed",
-    ),
     ProjectModel(
       appName: "Bio Music One",
       description: "Bio music is a mediation music app that helps to improve health, reduce stress and feel you relax.",
@@ -107,17 +58,137 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       iosAppLink: "https://apps.apple.com/fr/app/bio-music-one/id1598573976",
       androidAppLink: "",
       githubLink: "",
-      projectStatus: "Completed",
+      projectStatus: "Live",
+    ),
+    ProjectModel(
+      appName: "FirmPet",
+      description: "FirmPet is an advanced Health Monitoring App with curated features for pet health. A uniquely designed app, that offering tracking the pet's daily activities, Glucose level. "
+          "\nBuilt a SwiftUI-based pet health monitoring application with Libre2 sensor integration, custom analytics charts, and multi-pet profile management. "
+          "\nImplemented personalized data tracking, monitor pet's metabolic score, meal score insights, integrate pet profile, and doctor assignment features to enhance pet healthcare management.",
+          // "\nImplemented personalized data tracking, monitor pet's metabolic score, meal score insights, integrate pet profile, training and music video therapy, and doctor assignment features to enhance pet healthcare management.",
+      image: "",
+      tags: ["SwiftUI", "MVVM", "Firebase", "Charts", "URLSession", "Encryption/Decryption", "Combine", "CGM Sensor Activation", "BLE", "NFC", "Youtube Player"],
+      iosAppLink: "https://apps.apple.com/us/app/firmpet-app/id1641636133",
+      androidAppLink: "",
+      githubLink: "",
+      projectStatus: "Live",
+    ),
+    ProjectModel(
+      appName: "My Virtual Business Card",
+      description: "MVBC is the best online business card offering an innovative platform to manage your professional business cards on your mobile phone. "
+          "\n\nClient can scanned and stored traditional business cards in the app and share business card with colleagues. "
+          "\n\nImplemented In-app purchase integration, a user-friendly chat system, profile section, show active cards, sharing business card on social media and fixed issues.",
+      image: "",
+      tags: ["Swift", "MVVM", "Firebase", "Chatting", "In-app purchase", "Barcode Scanner"],
+      iosAppLink: "https://apps.apple.com/us/app/my-virtual-business-card/id1544764504",
+      androidAppLink: "",
+      githubLink: "",
+      projectStatus: "Live",
+    ),
+    ProjectModel(
+      appName: "Vighnaraja Textile Agency",
+      description: "Vighnaraja Textile Agency is an integrated organization providing complete Textile Sarees and Lahanga's collection to its clients nationwide. "
+          "\n\nFeatures: "
+          "\n - User profile "
+          "\n - Real time Order Entry "
+          "\n - Sale Outstanding Reports"
+          "\n - Contact Master with G.S.T Number"
+          "\n - User Management, Create new user"
+          "\n - Invoice, Ledger with Reports"
+          "\n - Order clearing tools",
+      image: "",
+      tags: ["Swift", "UIKit", "Alamofire", "Firebase", "MVC", "Restful API", "Push Notifications"],
+      iosAppLink: "https://apps.apple.com/us/app/vighnaraja-textile-agency/id1569863689",
+      androidAppLink: "",
+      githubLink: "",
+      projectStatus: "Live",
+    ),
+    ProjectModel(
+      appName: "Sunil Kr Anil Kr",
+      description: "Sunil Kr Anil Kr is an integrated organization providing complete Textile Sarees and Lahanga's collection to its clients nationwide. "
+          "\n\nFeatures: "
+          "\n - Dashboard "
+          "\n - Real time Order Entry "
+          "\n - Sale/Purchase Reports"
+          "\n - Contact Master with G.S.T Number"
+          "\n - User Management, Create new user"
+          "\n - Invoice, Ledger with Reports"
+          "\n - Order clearing tools",
+      image: "",
+      tags: ["Swift", "UIKit", "Alamofire", "Firebase", "MVC", "Restful API", "Push Notifications"],
+      iosAppLink: "https://apps.apple.com/us/app/sunil-kr-anil-kr/id1585011939",
+      androidAppLink: "",
+      githubLink: "",
+      projectStatus: "Live",
+    ),
+    ProjectModel(
+      appName: "ParkForU - Driver",
+      description: "Designed and developed the driver-side application for an airport valet and transportation service, enabling drivers to efficiently manage pickup and drop-off operations. "
+          "\n\nImplemented secure trip management, Profile creation, ride acceptance/decline workflow, manage online/offline availability status and driver shifts tracking. "
+      // "\nFocused on delivering a reliable and seamless experience for drivers while improving overall operational efficiency."
+          "\n\nThe application was previously deployed for the client and is no longer publicly available.",
+      image: "",
+      tags: ["Swift", "UIKit", "Firebase", "Alamofire", "MVC", "Rest API", "Push Notification", "Payment Integration"],
+      iosAppLink: "https://apps.apple.com/ca/app/park-for-u-driver/id1144908143",
+      androidAppLink: "",
+      githubLink: "",
+      projectStatus: "No Longer Available",
+    ),
+    ProjectModel(
+      appName: "Score Ice - Hockey",
+      description: "Developed and enhanced a hockey arena booking platform where arena managers create playing slots and users can discover and book available hockey sessions. "
+          """"\n\nImplemented advanced slot filtering based on date, time, and distance, developed the "Make Offer" feature for arena bookings, enhanced map-based slot discovery, and resolved critical UI and performance issues to improve the overall user experience.""""",
+      image: "",
+      tags: ["Swift", "UIKit", "MVVM", "Rest API", "Fastlane", "Firebase", "Stripe", "FSCalendar", "Google Maps"],
+      iosAppLink: "https://apps.apple.com/us/app/score-ice/id1424884700",
+      androidAppLink: "",
+      githubLink: "",
+      projectStatus: "Live",
+    ),
+    ProjectModel(
+      appName: "Mahogany Real Estate",
+      description: "A Canadian real estate app enabling users to discover, buy, and sell properties with smart filters, map-based search, saved listings, and location-based services."
+          "\n\nFeatures:"
+          "\n - Buy & Sell Properties"
+          "\n - Advanced Search Filters (price, property type, bedrooms, bathrooms, homes for sale or rent)"
+          "\n - Favorite & Saved Listings"
+          "\n - Nearby Amenities (gas stations, schools, grocery stores, and more)"
+          "\n - Seller Contact Info",
+      image: "",
+      tags: ["Swift", "UIKit", "MVC", "Rest API", "Alamofire", "Firebase", "Google Maps", "Social Login", "Location Services"],
+      iosAppLink: "",
+      androidAppLink: "",
+      githubLink: "",
+      projectStatus: "No Longer Available",
+    ),
+    ProjectModel(
+      appName: "The RealtyDen",
+      description: "A Canadian real estate app enabling users to discover, buy, and sell properties with smart filters, map-based search, polygon, saved listings, and location-based services."
+          "\n\nFeatures:"
+          "\n - Buy & Sell Properties"
+          "\n - Advanced Search Filters (price, property type, bedrooms, bathrooms, homes for sale or rent)"
+          "\n - Favorite & Saved Listings"
+          "\n - Draw Polygon on map"
+          "\n - Nearby Amenities (gas stations, schools, grocery stores, and more)"
+          "\n - Seller Contact Info",
+      image: "",
+      tags: ["Swift", "UIKit", "MVC", "Rest API", "Alamofire", "Firebase", "Google Maps", "Social Login", "Polygon", "Location Services"],
+      iosAppLink: "",
+      androidAppLink: "",
+      githubLink: "",
+      projectStatus: "No Longer Available",
     ),
     ProjectModel(
       appName: "Shree Khalashi Timala Punch",
-      description: "This app provides community details, upcoming news and events.",
+      description: "This app provides community details, upcoming news and events. "
+          "\n\n Developed the app from the scratch with enhanced features - Get latest news, Upcoming Competitions & Games, All Community Details, User Profile."
+          "\n\n This application was previously deployed for the client and is no longer available on the App Store. It remains available on Google Play Store.",
       image: "",
       tags: ["Flutter", "Firebase", "Dio", "MVVM", "Push Notification"],
-      iosAppLink: "",
+      iosAppLink: "https://apps.apple.com/in/app/khalashi-timla-panch-rander/id1497844584",
       androidAppLink: "https://play.google.com/store/apps/details?id=com.varshaaweblabs.shreekhalashitimalapanchrander",
       githubLink: "",
-      projectStatus: "Completed",
+      projectStatus: "Live",
     ),
   ];
 
@@ -136,8 +207,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
         children: [
           Padding(
             padding: EdgeInsetsGeometry.symmetric(
-              horizontal: Responsive.isMobile(context)
-                  ? Responsive.scale(context, min: 5, max: 25) : 25,
+              horizontal: Responsive.isMobile(context) ? 0 : 25,
             ),
             child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.4),),
           ),
@@ -199,7 +269,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
         curve: Curves.easeInOut,
         constraints: const BoxConstraints(minHeight: 320),
         padding: EdgeInsets.only(
-          top: 15, bottom: 10,
+          top: 15, bottom: 25,
           left: Responsive.isMobile(context) ? Responsive.scale(context, min: 5, max: 16) : 16,
           right: Responsive.isMobile(context) ? Responsive.scale(context, min: 5, max: 16) : 16,
         ),
@@ -255,9 +325,9 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                         child: Image.asset(
                           "assets/ic_appstore.jpeg",
                           width: Responsive.isMobile(context)
-                              ? Responsive.scale(context, min: 10, max: 24) : 22,
+                              ? Responsive.scale(context, min: 10, max: 24) : 20,
                           height: Responsive.isMobile(context)
-                              ? Responsive.scale(context, min: 10, max: 24) : 22,
+                              ? Responsive.scale(context, min: 10, max: 24) : 20,
                         ),
                       ),
 
@@ -271,12 +341,63 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                         child: Image.asset(
                           "assets/ic_playstore.jpeg",
                           width: Responsive.isMobile(context)
-                              ? Responsive.scale(context, min: 10, max: 22) : 20,
+                              ? Responsive.scale(context, min: 10, max: 22) : 18,
                           height: Responsive.isMobile(context)
-                              ? Responsive.scale(context, min: 10, max: 22) : 20,
+                              ? Responsive.scale(context, min: 10, max: 22) : 18,
                         ),
                       ),
                   ],
+                ),
+              ],
+            ),
+
+            SizedBox(height: Responsive.isMobile(context) ? 4 : 8),
+
+            // project Status
+            Row(
+              spacing: 8,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 3,
+                        horizontal: Responsive.isMobile(context)
+                            ? Responsive.scale(context, min: 5, max: 15) : 15,
+                      ),
+                      decoration: BoxDecoration(
+                        color: data.projectStatus == "Live"
+                            ? AppColors.darkGreenColor.withValues(alpha: 0.1)
+                            : data.projectStatus == "Under Development"
+                            ? AppColors.orangeColor.withValues(alpha: 0.05)
+                            : data.projectStatus == "No Longer Available"
+                            ? AppColors.redColor.withValues(alpha: 0.1)
+                            : AppColors.lightBlackColor.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          width: 0.5,
+                          color: data.projectStatus == "Live"
+                              ? AppColors.darkGreenColor.withValues(alpha: 0.5)
+                              : data.projectStatus == "Under Development"
+                              ? AppColors.orangeColor.withValues(alpha: 0.5)
+                              : data.projectStatus == "No Longer Available"
+                              ? AppColors.redColor.withValues(alpha: 0.5)
+                              : AppColors.lightWhiteColor.withValues(alpha: 0.3),
+                        ),
+                      ),
+                      child: AppLabelTextView(
+                        data.projectStatus,
+                        fontSize: Responsive.isMobile(context)
+                            ? Responsive.scale(context, min: 6, max: 15) : 10,
+                        fontWeight: FontWeight.w400,
+                        textColor: AppColors.appWhiteColor.withValues(alpha: 0.7),
+                        softWrap: true,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -290,10 +411,10 @@ class _ProjectsSectionState extends State<ProjectsSection> {
               fontSize: Responsive.isMobile(context)
                   ? Responsive.scale(context, min: 11, max: 18) : 13,
               fontWeight: FontWeight.w400,
-              textColor: AppColors.appWhiteColor.withValues(alpha: 0.5),
+              textColor: AppColors.appWhiteColor.withValues(alpha: 0.7),
             ),
 
-            const SizedBox(height: 20,),
+            SizedBox(height: Responsive.isMobile(context) ? 20 : 25,),
 
             //  Tags
             Wrap(
@@ -303,52 +424,6 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                   .map((tag) => TagsView(title: tag))
                   .toList(),
             ),
-
-            const SizedBox(height: 25,),
-            // Spacer(),
-
-            // Row(
-            //   spacing: 8,
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   crossAxisAlignment: CrossAxisAlignment.center,
-            //   children: [
-            //     Expanded(
-            //       child: Align(
-            //         alignment: Alignment.centerLeft,
-            //         child: Container(
-            //           padding: EdgeInsets.symmetric(
-            //             vertical: 5,
-            //             horizontal: Responsive.isMobile(context)
-            //                 ? Responsive.scale(context, min: 5, max: 15) : 15,
-            //           ),
-            //           decoration: BoxDecoration(
-            //             color: data.projectStatus == "Completed"
-            //                 ? AppColors.darkGreenColor.withValues(alpha: 0.1)
-            //                 : data.projectStatus == "In Progress"
-            //                 ? AppColors.orangeColor.withValues(alpha: 0.05)
-            //                 : AppColors.lightBlackColor.withValues(alpha: 0.1),
-            //             borderRadius: BorderRadius.circular(12),
-            //             border: Border.all(
-            //               width: 0.5,
-            //               color: data.projectStatus == "Completed"
-            //                   ? AppColors.darkGreenColor
-            //                   : data.projectStatus == "In Progress"
-            //                   ? AppColors.orangeColor : AppColors.lightWhiteColor.withValues(alpha: 0.8),
-            //             ),
-            //           ),
-            //           child: AppLabelTextView(
-            //             data.projectStatus,
-            //             fontSize: Responsive.isMobile(context)
-            //                 ? Responsive.scale(context, min: 6, max: 18) : 12,
-            //             fontWeight: FontWeight.w400,
-            //             textColor: AppColors.appWhiteColor.withValues(alpha: 0.7),
-            //             softWrap: true,
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
           ],
         ),
       ),

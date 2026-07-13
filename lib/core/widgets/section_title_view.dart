@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
 import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 import 'package:krunal_portfolio/core/widgets/app_label_text/app_label_text_view.dart';

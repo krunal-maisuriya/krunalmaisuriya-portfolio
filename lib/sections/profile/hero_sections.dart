@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
 import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 import 'package:krunal_portfolio/core/utils/helper/social_link_helper.dart';
@@ -11,9 +10,15 @@ import 'package:krunal_portfolio/sections/profile/widgets/cv_button_view.dart';
 import 'package:krunal_portfolio/sections/profile/widgets/profile_image_view.dart';
 import 'package:krunal_portfolio/sections/profile/widgets/project_experience_count_view.dart';
 import 'package:krunal_portfolio/sections/profile/widgets/view_my_work_button_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HeroSections extends StatelessWidget {
-  const HeroSections({super.key});
+  final VoidCallback onTap;
+
+  const HeroSections({
+    super.key,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +26,9 @@ class HeroSections extends StatelessWidget {
       color: Color(0XFF121216),
       child: LayoutBuilder(
         builder: (context, constraints) {
-          // bool isTablet = constraints.maxWidth > 990;
-
           bool isDesktop = constraints.maxWidth >= 820;
           bool isTablet = constraints.maxWidth >= 750 && constraints.maxWidth < 820;
-          bool isMobile = constraints.maxWidth < 750;
-
+          // bool isMobile = constraints.maxWidth < 750;
 
           return Padding(
             padding: EdgeInsets.only(
@@ -131,16 +133,34 @@ class HeroSections extends StatelessWidget {
         const SizedBox(height: 20),
         SizedBox(
           width: 650,
-          child: AppLabelTextView(
-            "As a Senior iOS and Flutter App Developer based in Dubai with 8+ years of experience in mobile application development. "
-                "I specialize in building high-performance, scalable, and user-friendly mobile apps for both iOS and cross-platform environments. "
-                "With a strong expertise in Swift, SwiftUI, Flutter and modern mobile architectures. "
-                "Passionate about creating seamless user experiences and transforming ideas into innovative, high-impact digital products.",
-            fontSize: Responsive.isMobile(context)
-                ? Responsive.scale(context, min: 11, max: 21)
-                : 16,
-            fontWeight: FontWeight.w400,
-            textColor: AppColors.appWhiteColor.withValues(alpha: 0.65),
+          child: Column(
+            spacing: 7,
+            children: [
+              AppLabelTextView(
+                "As a Senior iOS & Flutter App Developer based in Dubai with 8+ years of experience building high-quality native and cross-platform mobile applications. ",
+                fontSize: Responsive.isMobile(context)
+                    ? Responsive.scale(context, min: 11, max: 20)
+                    : 14.5,
+                fontWeight: FontWeight.w400,
+                textColor: AppColors.appWhiteColor.withValues(alpha: 0.65),
+              ),
+              AppLabelTextView(
+                "Specialized in Swift, SwiftUI, Flutter, Firebase, and modern mobile architectures, creating scalable, high-performance, and user-focused digital experiences. ",
+                fontSize: Responsive.isMobile(context)
+                    ? Responsive.scale(context, min: 11, max: 20)
+                    : 14.5,
+                fontWeight: FontWeight.w400,
+                textColor: AppColors.appWhiteColor.withValues(alpha: 0.65),
+              ),
+              AppLabelTextView(
+                  "Published 12+ apps on the App Store across E-commerce, Real Estate, Sports, Utilities, Business, and Health & Fitness domains.",
+                fontSize: Responsive.isMobile(context)
+                    ? Responsive.scale(context, min: 11, max: 20)
+                    : 14.5,
+                fontWeight: FontWeight.w400,
+                textColor: AppColors.appWhiteColor.withValues(alpha: 0.65),
+              ),
+            ],
           ),
         ),
         const SizedBox(height: 30),
@@ -165,6 +185,7 @@ class HeroSections extends StatelessWidget {
               horizontalPaddingSize: Responsive.scale(context, min: 1, max: 8),
               fontSize: Responsive.isMobile(context)
                   ? Responsive.scale(context, min: 3, max: 17) : 14,
+              onTap: () => downloadResume(),
             ),
 
             //  View My Work
@@ -181,6 +202,7 @@ class HeroSections extends StatelessWidget {
                 horizontalPaddingSize: Responsive.scale(context, min: 0, max: 5),
                 fontSize: Responsive.isMobile(context)
                     ? Responsive.scale(context, min: 3, max: 17) : 14,
+                onTap: () => onTap(),
               ),
             ),
           ],
@@ -251,7 +273,7 @@ class HeroSections extends StatelessWidget {
               ),
             ),
 
-            _experienceProjectView(context, value: "13+", title: "MAJOR PROJECTS"),
+            _experienceProjectView(context, value: "16+", title: "MAJOR PROJECTS"),
           ],
         ),
       ],
@@ -298,5 +320,16 @@ class HeroSections extends StatelessWidget {
             : 35,
       ),
     );
+  }
+
+  //  Download Resume
+  Future<void> downloadResume() async {
+    final url = Uri.parse('https://drive.google.com/file/d/1nTZ-hEd65GhpUk51AGdCkmcqyqEJyUac/view?usp=drive_link');
+
+    if (!await launchUrl(url,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw Exception('Could not open resume');
+    }
   }
 }

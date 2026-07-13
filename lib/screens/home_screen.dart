@@ -7,6 +7,7 @@ import 'package:krunal_portfolio/core/widgets/app_label_text/app_label_text_view
 import 'package:krunal_portfolio/screens/header_view.dart';
 import 'package:krunal_portfolio/sections/contact_section.dart';
 import 'package:krunal_portfolio/sections/copy_right_section.dart';
+import 'package:krunal_portfolio/sections/educations_section.dart';
 import 'package:krunal_portfolio/sections/experience_section.dart';
 import 'package:krunal_portfolio/sections/profile/hero_sections.dart';
 import 'package:krunal_portfolio/sections/projects_section.dart';
@@ -30,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final experienceKey = GlobalKey();
   final skillsKey = GlobalKey();
   final projectsKey = GlobalKey();
+  final educationsKey = GlobalKey();
   final contactKey = GlobalKey();
 
 
@@ -62,10 +64,15 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               spacing: 0,
               children: [
-                Container(key: homeKey, child: HeroSections()),
+                Container(key: homeKey,
+                  child: HeroSections(
+                    onTap: () => setState(() => scrollToSection(projectsKey)),
+                  ),
+                ),
                 Container(key: experienceKey, child: ExperienceSection()),
                 Container(key: skillsKey, child: SkillsSection()),
                 Container(key: projectsKey, child: ProjectsSection()),
+                Container(key: educationsKey, child: EducationsSection()),
                 Container(key: contactKey, child: ContactSection()),
                 CopyRightSection(),
               ],

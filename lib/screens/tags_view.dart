@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
 import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 import 'package:krunal_portfolio/core/widgets/app_label_text/app_label_text_view.dart';
@@ -22,14 +21,14 @@ class _TagsViewState extends State<TagsView> {
         borderRadius: BorderRadius.circular(
           Responsive.isMobile(context) ? Responsive.scale(context, min: 6, max: 8) : 7,
         ),
-        border: Border.all(color: AppColors.lightWhiteColor.withValues(alpha: 0.7), width: 0.4),
+        border: Border.all(color: AppColors.lightWhiteColor.withValues(alpha: 0.2), width: 0.4),
       ),
       child: AppLabelTextView(
         widget.title,
         fontSize: Responsive.isMobile(context)
             ? Responsive.scale(context, min: 8, max: 18) : 12,
         fontWeight: FontWeight.w500,
-        textColor: AppColors.lightWhiteColor.withValues(alpha: 0.8),
+        textColor: AppColors.lightWhiteColor.withValues(alpha: 0.5),
       ),
     );
   }

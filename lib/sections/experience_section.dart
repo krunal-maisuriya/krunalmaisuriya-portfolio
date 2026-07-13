@@ -32,7 +32,7 @@ class ExperienceSection extends StatelessWidget {
         "Used MVC, MVVM design pattern, Realm database, Firebase for chatting, push notifications and storing auth credentials, Payment gateways (Apple pay, Stripe).",
         "Optimization and migration of Core Data.",
       ],
-      "used_languages": ["SwiftUI", "MVVM", "MVC", "Socket.io", "BLE", "Hardware Activation", "Charts", "Stripe", "Combine", ],
+      "used_languages": ["SwiftUI", "MVVM", "MVC", "Socket.io", "BLE", "NFC", "Hardware Activation", "Charts", "Stripe", "Combine", ],
     },
     {
       "company_name": "Varshaa WebLabs",
@@ -80,8 +80,7 @@ class ExperienceSection extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsetsGeometry.symmetric(
-              horizontal: Responsive.isMobile(context)
-                  ? Responsive.scale(context, min: 5, max: 25) : 25,
+              horizontal: Responsive.isMobile(context) ? 0 : 25,
             ),
             child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.4),),
           ),

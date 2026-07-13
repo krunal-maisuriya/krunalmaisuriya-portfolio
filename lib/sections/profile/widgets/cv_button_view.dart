@@ -9,6 +9,7 @@ class CvButtonView extends StatelessWidget {
   final double iconSize;
   final double horizontalPaddingSize;
   final double fontSize;
+  final VoidCallback onTap;
 
   const CvButtonView({
     super.key,
@@ -18,38 +19,42 @@ class CvButtonView extends StatelessWidget {
     required this.iconSize,
     required this.horizontalPaddingSize,
     required this.fontSize,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: vertical,
-        horizontal: horizontal,
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius),
-        border: Border.all(color: AppColors.cyanColor.shade500, width: 1.0),
-        color: AppColors.cyanColor.shade800.withValues(alpha: 0.15),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.download_rounded,
-            size: iconSize,
-            color: AppColors.appWhiteColor,
-          ),
-          SizedBox(width: horizontalPaddingSize),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: vertical,
+          horizontal: horizontal,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius),
+          border: Border.all(color: AppColors.cyanColor.shade500, width: 1.0),
+          color: AppColors.cyanColor.shade800.withValues(alpha: 0.15),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.download_rounded,
+              size: iconSize,
+              color: AppColors.appWhiteColor,
+            ),
+            SizedBox(width: horizontalPaddingSize),
 
-          AppLabelTextView(
-            "CV",
-            fontSize: fontSize,
-            fontWeight: FontWeight.w800,
-            textColor: AppColors.appWhiteColor,
-          ),
-        ],
+            AppLabelTextView(
+              "CV",
+              fontSize: fontSize,
+              fontWeight: FontWeight.w800,
+              textColor: AppColors.appWhiteColor,
+            ),
+          ],
+        ),
       ),
     );
   }

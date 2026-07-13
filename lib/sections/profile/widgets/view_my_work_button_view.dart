@@ -9,6 +9,7 @@ class ViewMyWorkButtonView extends StatelessWidget {
   final double iconSize;
   final double horizontalPaddingSize;
   final double fontSize;
+  final VoidCallback onTap;
 
   const ViewMyWorkButtonView({
     super.key,
@@ -18,41 +19,45 @@ class ViewMyWorkButtonView extends StatelessWidget {
     required this.iconSize,
     required this.horizontalPaddingSize,
     required this.fontSize,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: vertical,
-        horizontal: horizontal,
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius),
-        border: Border.all(color: AppColors.cyanColor.shade800, width: 1.0),
-        color: AppColors.cyanColor.shade800,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Flexible(
-            child: AppLabelTextView(
-              "View My Work",
-              fontSize: fontSize,
-              fontWeight: FontWeight.w800,
-              textColor: AppColors.appWhiteColor,
-              softWrap: true,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 4,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: vertical,
+          horizontal: horizontal,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(borderRadius),
+          border: Border.all(color: AppColors.cyanColor.shade800, width: 1.0),
+          color: AppColors.cyanColor.shade800,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Flexible(
+              child: AppLabelTextView(
+                "View My Work",
+                fontSize: fontSize,
+                fontWeight: FontWeight.w800,
+                textColor: AppColors.appWhiteColor,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 4,
+              ),
             ),
-          ),
-          SizedBox(width: horizontalPaddingSize,),
-          Icon(Icons.arrow_right_alt_sharp, color: AppColors.appWhiteColor,
-            size: iconSize,
-          ),
-        ],
+            SizedBox(width: horizontalPaddingSize,),
+            Icon(Icons.arrow_right_alt_sharp, color: AppColors.appWhiteColor,
+              size: iconSize,
+            ),
+          ],
+        ),
       ),
     );
   }

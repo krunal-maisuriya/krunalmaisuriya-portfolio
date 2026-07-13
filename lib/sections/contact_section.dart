@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
 import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 import 'package:krunal_portfolio/core/utils/helper/social_link_helper.dart';
@@ -23,10 +22,8 @@ class ContactSection extends StatelessWidget {
           Padding(
             padding: EdgeInsetsGeometry.only(
               top: 0, bottom: 35,
-              left: Responsive.isMobile(context)
-                  ? Responsive.scale(context, min: 5, max: 25) : 25,
-              right: Responsive.isMobile(context)
-                  ? Responsive.scale(context, min: 5, max: 25) : 25,
+              left: Responsive.isMobile(context) ? 0 : 25,
+              right: Responsive.isMobile(context) ? 0 : 25,
             ),
             child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.4),),
           ),
@@ -130,7 +127,7 @@ class ContactSection extends StatelessWidget {
               top: 20, bottom: 25,
             ),
             decoration: BoxDecoration(
-              border: Border.all(color: AppColors.greyColor.shade800.withValues(alpha: 0.8)),
+              border: Border.all(color: AppColors.cyanColor.shade800.withValues(alpha: 0.8), width: 1.5),
               borderRadius: BorderRadius.circular(Responsive.scale(context, min: 7, max: 10)),
             ),
             child: Column(
@@ -219,7 +216,7 @@ class ContactSection extends StatelessWidget {
             top: 20, bottom: 15,
           ),
           decoration: BoxDecoration(
-            border: Border.all(color: AppColors.greyColor.shade800.withValues(alpha: 0.8)),
+            border: Border.all(color: AppColors.cyanColor.shade800.withValues(alpha: 0.8), width: 1.5),
             borderRadius: BorderRadius.circular(Responsive.scale(context, min: 8, max: 10)),
           ),
           child: Column(

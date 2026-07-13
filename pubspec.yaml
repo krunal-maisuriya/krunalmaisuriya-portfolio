@@ -71,6 +71,7 @@ flutter:
     - assets/krunal_maisuriya.jpeg
     - assets/ic_appstore.jpeg
     - assets/ic_playstore.jpeg
+    - assets/ic_address_pin.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
