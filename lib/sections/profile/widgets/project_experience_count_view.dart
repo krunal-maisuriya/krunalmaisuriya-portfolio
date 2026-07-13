@@ -5,7 +5,7 @@ import 'package:krunal_portfolio/core/widgets/app_label_text/app_label_text_view
 class ProjectExperienceCountView extends StatelessWidget {
   final String title;
   final double titleFont;
-  final String value;
+  final int value;
   final double valueFont;
 
   const ProjectExperienceCountView({super.key,
@@ -20,12 +20,18 @@ class ProjectExperienceCountView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppLabelTextView(
-          value,
-          fontSize: valueFont,
-          fontWeight: FontWeight.w900,
-          textColor: AppColors.cyanColor.shade800,
-          textAlign: TextAlign.center,
+        TweenAnimationBuilder<int>(
+          tween: IntTween(begin: 0, end: value),
+          duration: const Duration(seconds: 2),
+          builder: (context, value, child) {
+            return AppLabelTextView(
+              "$value+",
+              fontSize: valueFont,
+              fontWeight: FontWeight.w900,
+              textColor: AppColors.cyanColor.shade800,
+              textAlign: TextAlign.center,
+            );
+          },
         ),
 
         AppLabelTextView(

@@ -20,8 +20,8 @@ class _ProjectsSectionState extends State<ProjectsSection> {
 
   final List<ProjectModel> projectsData = [
     ProjectModel(
-      appName: "Zap Solar",
-      description: "",
+      appName: "ZAP Solar",
+      description: "ZAP Solar is a smart solar energy management application currently under development, designed to help users monitor solar plant performance, track energy production and consumption, view billing details, manage equipments, contracts, and maintenance service, while providing comprehensive analytics and system insights. ",
       image: "",
       tags: ["Flutter", "Dart", "Firebase", "Charts", "Dio", "Riverpod"],
       iosAppLink: "",
@@ -31,8 +31,8 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     ),
     ProjectModel(
       appName: "Zap Power App (Customer)",
-      description: "Developed a modern application that customer check the subscription and purchase the subscription. Also Customer get the battery order delivery. "
-          "",
+      description: "ZAP Power App is a smart home energy subscription application currently under development that enables customers to power their homes through a battery-based energy service. "
+          "\n\nDeveloped the app from the scratch with enhanced features - subscription and contract management, battery delivery and installation tracking, energy usage monitoring, billing and payment modules, charging service scheduling, real-time service status tracking, push notifications, API integrations, and performance optimizations to deliver a seamless and user-friendly experience.",
       image: "",
       tags: ["Flutter", "Dart", "Firebase", "Charts", "Dio", "Riverpod", "GoogleMaps", "pdfviewer", "Stripe", "Apple Pay"],
       iosAppLink: "",

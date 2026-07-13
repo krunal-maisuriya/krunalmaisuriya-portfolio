@@ -254,7 +254,7 @@ class HeroSections extends StatelessWidget {
               ? MainAxisAlignment.start
               : MainAxisAlignment.center,
           children: [
-            _experienceProjectView(context, value: "8+", title: "YEAR OF EXPERIENCE"),
+            _experienceProjectView(context, value: 8, title: "YEAR OF EXPERIENCE"),
 
             Padding(
               padding: EdgeInsets.symmetric(
@@ -273,7 +273,7 @@ class HeroSections extends StatelessWidget {
               ),
             ),
 
-            _experienceProjectView(context, value: "16+", title: "MAJOR PROJECTS"),
+            _experienceProjectView(context, value: 16, title: "MAJOR PROJECTS"),
           ],
         ),
       ],
@@ -307,7 +307,7 @@ class HeroSections extends StatelessWidget {
 
 
   //  Experience & Done Project View
-  Widget _experienceProjectView(BuildContext context, {required String value, required String title}) {
+  Widget _experienceProjectView(BuildContext context, {required int value, required String title}) {
     return Flexible(
       child: ProjectExperienceCountView(
         title: title,
