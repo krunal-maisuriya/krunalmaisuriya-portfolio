@@ -63,8 +63,8 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     ProjectModel(
       appName: "FirmPet",
       description: "FirmPet is an advanced Health Monitoring App with curated features for pet health. A uniquely designed app, that offering tracking the pet's daily activities, Glucose level. "
-          "\nBuilt a SwiftUI-based pet health monitoring application with Libre2 sensor integration, custom analytics charts, and multi-pet profile management. "
-          "\nImplemented personalized data tracking, monitor pet's metabolic score, meal score insights, integrate pet profile, and doctor assignment features to enhance pet healthcare management.",
+          "\n\nBuilt a SwiftUI-based pet health monitoring application with Libre2 sensor integration, custom analytics charts, and multi-pet profile management. "
+          "\n\nImplemented personalized data tracking, monitor pet's metabolic score, meal score insights, integrate pet profile, and doctor assignment features to enhance pet healthcare management.",
           // "\nImplemented personalized data tracking, monitor pet's metabolic score, meal score insights, integrate pet profile, training and music video therapy, and doctor assignment features to enhance pet healthcare management.",
       image: "",
       tags: ["SwiftUI", "MVVM", "Firebase", "Charts", "URLSession", "Encryption/Decryption", "Combine", "CGM Sensor Activation", "BLE", "NFC", "Youtube Player"],
@@ -77,7 +77,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       appName: "My Virtual Business Card",
       description: "MVBC is the best online business card offering an innovative platform to manage your professional business cards on your mobile phone. "
           "\n\nClient can scanned and stored traditional business cards in the app and share business card with colleagues. "
-          "\n\nImplemented In-app purchase integration, a user-friendly chat system, profile section, show active cards, sharing business card on social media and fixed issues.",
+          "\n\nImplemented Authentication, In-app purchases, Firebase real-time chat with online/offline status, show active cards, sharing business card on social media and fixed issues.",
       image: "",
       tags: ["Swift", "MVVM", "Firebase", "Chatting", "In-app purchase", "Barcode Scanner"],
       iosAppLink: "https://apps.apple.com/us/app/my-virtual-business-card/id1544764504",
@@ -86,7 +86,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       projectStatus: "Live",
     ),
     ProjectModel(
-      appName: "Vighnaraja Textile Agency",
+      appName: " ",
       description: "Vighnaraja Textile Agency is an integrated organization providing complete Textile Sarees and Lahanga's collection to its clients nationwide. "
           "\n\nFeatures: "
           "\n - User profile "
