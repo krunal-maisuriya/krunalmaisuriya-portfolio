@@ -86,7 +86,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       projectStatus: "Live",
     ),
     ProjectModel(
-      appName: " ",
+      appName: "Vighnaraja Textile Agency",
       description: "Vighnaraja Textile Agency is an integrated organization providing complete Textile Sarees and Lahanga's collection to its clients nationwide. "
           "\n\nFeatures: "
           "\n - User profile "
