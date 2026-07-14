@@ -20,7 +20,7 @@ class ContactSection extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsetsGeometry.only(
+            padding: EdgeInsets.only(
               top: 0, bottom: 35,
               left: Responsive.isMobile(context) ? 0 : 25,
               right: Responsive.isMobile(context) ? 0 : 25,

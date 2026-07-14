@@ -79,7 +79,7 @@ class ExperienceSection extends StatelessWidget {
         spacing: 12,
         children: [
           Padding(
-            padding: EdgeInsetsGeometry.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: Responsive.isMobile(context) ? 0 : 25,
             ),
             child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.4),),
@@ -89,7 +89,7 @@ class ExperienceSection extends StatelessWidget {
           SectionTitleView(title: "Work Experience", textColor: AppColors.appWhiteColor),
 
           Padding(
-            padding: EdgeInsetsGeometry.only(left: 5),
+            padding: EdgeInsets.only(left: 5),
             child: Column(
               spacing: 30,
               children: experiencesData.map((experience) =>

@@ -55,7 +55,7 @@ class _SkillsSectionState extends State<SkillsSection> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsGeometry.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: Responsive.isMobile(context) ? 0 : 25,
             ),
             child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.4),),

@@ -21,7 +21,7 @@ class AboutMeSection extends StatelessWidget {
         spacing: 12,
         children: [
           Padding(
-            padding: EdgeInsetsGeometry.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: Responsive.isMobile(context) ? 0 : 25,
             ),
             child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.4),),
@@ -29,7 +29,7 @@ class AboutMeSection extends StatelessWidget {
 
           // SECTION TITLE
           Padding(
-            padding: EdgeInsetsGeometry.symmetric(vertical: 25),
+            padding: EdgeInsets.symmetric(vertical: 25),
             child: AppLabelTextView(
               "About Me".toUpperCase(),
               fontSize: Responsive.isMobile(context)

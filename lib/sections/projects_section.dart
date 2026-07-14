@@ -206,7 +206,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsGeometry.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: Responsive.isMobile(context) ? 0 : 25,
             ),
             child: Divider(color: AppColors.cyanColor.withValues(alpha: 0.4),),
@@ -370,7 +370,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                       ),
                       decoration: BoxDecoration(
                         color: data.projectStatus == "Live"
-                            ? AppColors.darkGreenColor.withValues(alpha: 0.1)
+                            ? AppColors.darkGreenColor.withValues(alpha: 0.3)
                             : data.projectStatus == "Under Development"
                             ? AppColors.orangeColor.withValues(alpha: 0.05)
                             : data.projectStatus == "No Longer Available"
@@ -378,9 +378,9 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                             : AppColors.lightBlackColor.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          width: 0.5,
+                          width: 0.8,
                           color: data.projectStatus == "Live"
-                              ? AppColors.darkGreenColor.withValues(alpha: 0.5)
+                              ? AppColors.darkGreenColor.withValues(alpha: 0.7)
                               : data.projectStatus == "Under Development"
                               ? AppColors.orangeColor.withValues(alpha: 0.5)
                               : data.projectStatus == "No Longer Available"

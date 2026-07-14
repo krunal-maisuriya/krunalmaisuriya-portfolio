@@ -171,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Divider(color: AppColors.appWhiteColor.withValues(alpha: 0.3),),
 
                   Padding(
-                    padding: EdgeInsetsGeometry.symmetric(horizontal: Responsive.scale(context, min: 3, max: 15)),
+                    padding: EdgeInsets.symmetric(horizontal: Responsive.scale(context, min: 3, max: 15)),
                     child: hireMeNavView(),
                   ),
 
