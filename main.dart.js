@@ -64227,7 +64227,7 @@ return new A.fz(1,B.bH,new A.En(b,q,c,A.W(a,s,r).w.a.a<425?A.P(a,35,8):35,s),s)}
 rE(){var s=0,r=A.K(t.H)
 var $async$rE=A.L(function(a,b){if(a===1)return A.H(b,r)
 for(;;)switch(s){case 0:s=2
-return A.G(A.ne(A.e0("https://drive.google.com/file/d/1nTZ-hEd65GhpUk51AGdCkmcqyqEJyUac/view?usp=drive_link",0,null),B.l8),$async$rE)
+return A.G(A.ne(A.e0("https://drive.google.com/file/d/1wMxaADL4X5IQuOoCPF2dM5rSuwV2-lAH/view?usp=drive_link",0,null),B.l8),$async$rE)
 case 2:if(!b)throw A.f(A.cb("Could not open resume"))
 return A.I(null,r)}})
 return A.J($async$rE,r)}}
@@ -64237,7 +64237,7 @@ m=A.P(a,40,3)
 s=A.P(a,40,3)
 r=l?150:120
 q=l?120:40
-if(l)p=A.cB(A.c([A.io(this.a.xs(a,B.a_),1),A.cD(n,n,A.P(a,180,10)),new A.oD(A.P(a,330,250),A.P(a,330,250),n),A.cD(n,n,A.P(a,120,10))],t.p),B.z,B.bo,B.t,0)
+if(l)p=A.cB(A.c([A.io(this.a.xs(a,B.a_),1),A.cD(n,n,A.P(a,180,10)),new A.oD(A.P(a,310,250),A.P(a,310,250),n),A.cD(n,n,A.P(a,120,10))],t.p),B.z,B.bo,B.t,0)
 else{p=this.a
 o=t.p
 p=k?A.cB(A.c([A.io(p.xs(a,B.a_),1),B.IX,new A.oD(200,200,n),B.IW],o),B.z,B.bo,B.t,0):A.bJ(A.c([new A.oD(A.P(a,255,150),A.P(a,255,150),n),B.dH,p.xs(a,B.aL)],o),B.z,B.bT,B.t,0)}return new A.ch(new A.az(m,r,s,q),p,n)},
@@ -64271,7 +64271,7 @@ M(a){var s=this,r=null,q=s.c,p=s.d,o=A.cx(s.e),n=A.dm(B.km,1),m=B.ai.ar(0.15)
 return A.cz(r,A.bp(r,A.cB(A.c([A.CS(B.AQ,r,r,B.h,r,r,r,r,r,r,r,s.f,r,r),A.cD(r,r,s.r),A.ba("CV",s.w,B.ay,r,r,r,r,B.B,B.h)],t.p),B.z,B.r,B.aC,0),B.o,r,r,new A.bv(m,r,n,o,r,r,B.M),r,r,r,r,new A.az(p,q,p,q),r,r,r),B.J,!1,r,r,r,r,r,r,r,r,r,r,r,r,r,s.x,r,r,r)}}
 A.oD.prototype={
 M(a){var s=null,r=this.c,q=A.cx(r/2)
-return A.bp(s,s,B.o,s,s,new A.bv(B.eO,B.A_,A.dm(B.ai.ar(0.8),3.5),q,A.c([new A.fs(0,B.fG,B.aD.ar(0.34),B.j,50)],t.sq),s,B.M),s,this.d,s,s,s,s,s,r)}}
+return A.bp(s,s,B.o,s,s,new A.bv(B.eO,B.A_,A.dm(B.ai.ar(0.8),3.5),q,A.c([new A.fs(0,B.fG,B.aD.ar(0.54),B.j,80)],t.sq),s,B.M),s,this.d,s,s,s,s,s,r)}}
 A.En.prototype={
 M(a){var s=this,r=null
 return A.bJ(A.c([new A.pi(new A.jM(0,s.e),new A.Zb(s),B.V,B.eo,r,r,t.FV),A.ba(s.c,s.d,B.p,r,r,r,r,B.aL,B.h)],t.p),B.I,B.r,B.t,0)}}
