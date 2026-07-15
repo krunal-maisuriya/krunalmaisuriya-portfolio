@@ -64227,7 +64227,7 @@ return new A.fz(1,B.bH,new A.En(b,q,c,A.W(a,s,r).w.a.a<425?A.P(a,35,8):35,s),s)}
 rE(){var s=0,r=A.K(t.H)
 var $async$rE=A.L(function(a,b){if(a===1)return A.H(b,r)
 for(;;)switch(s){case 0:s=2
-return A.G(A.ne(A.e0("https://drive.google.com/file/d/1EPlNMAY4fA11I2fWseoKuIQ7YivfPlhG/view",0,null),B.l8),$async$rE)
+return A.G(A.ne(A.e0("https://drive.google.com/file/d/1EPlNMAY4fA11I2fWseoKuIQ7YivfPlhG/view?usp=sharing",0,null),B.l8),$async$rE)
 case 2:if(!b)throw A.f(A.cb("Could not open resume"))
 return A.I(null,r)}})
 return A.J($async$rE,r)}}
