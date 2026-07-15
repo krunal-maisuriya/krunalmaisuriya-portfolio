@@ -11,7 +11,7 @@ class ExperienceSection extends StatelessWidget {
     {
       "company_name": "ZAP Power FZCO",
       "position": "iOS & Flutter App Developer",
-      "present_year": "July 2023 - Present",
+      "present_year": "August 2023 - Present",
       "location": "Dubai, UAE",
       "experience": [
         "Led the development of iOS and Flutter mobile applications from scratch, including architecture planning, feature implementation, and project execution.",
