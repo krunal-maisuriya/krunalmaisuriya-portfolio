@@ -324,8 +324,7 @@ class HeroSections extends StatelessWidget {
 
   //  Download Resume
   Future<void> downloadResume() async {
-    final url = Uri.parse("https://drive.google.com/file/d/1EPlNMAY4fA11I2fWseoKuIQ7YivfPlhG/view");
-    // final url = Uri.parse('https://drive.google.com/file/d/1EPlNMAY4fA11I2fWseoKuIQ7YivfPlhG/view?usp=drive_link');
+    final url = Uri.parse("https://drive.google.com/file/d/1EPlNMAY4fA11I2fWseoKuIQ7YivfPlhG/view?usp=drive_link");
 
     if (!await launchUrl(url,
       mode: LaunchMode.externalApplication,
