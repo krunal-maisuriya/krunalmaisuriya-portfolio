@@ -21,8 +21,8 @@ class ProfileImageView extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            blurRadius: 50,
-            color: AppColors.cyanColor.withValues(alpha: 0.34),
+            blurRadius: 80,
+            color: AppColors.cyanColor.withValues(alpha: 0.54),
           ),
         ],
       ),

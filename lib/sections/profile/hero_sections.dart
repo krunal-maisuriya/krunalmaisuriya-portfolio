@@ -61,8 +61,8 @@ class HeroSections extends StatelessWidget {
 
         // RIGHT IMAGE
         ProfileImageView(
-          width: Responsive.scale(context, min: 250, max: 330),
-          height: Responsive.scale(context, min: 250, max: 330),
+          width: Responsive.scale(context, min: 250, max: 310),
+          height: Responsive.scale(context, min: 250, max: 310),
         ),
         SizedBox(width: Responsive.scale(context, min: 10, max: 120)),
       ],
@@ -324,7 +324,7 @@ class HeroSections extends StatelessWidget {
 
   //  Download Resume
   Future<void> downloadResume() async {
-    final url = Uri.parse('https://drive.google.com/file/d/1nTZ-hEd65GhpUk51AGdCkmcqyqEJyUac/view?usp=drive_link');
+    final url = Uri.parse('https://drive.google.com/file/d/1wMxaADL4X5IQuOoCPF2dM5rSuwV2-lAH/view?usp=drive_link');
 
     if (!await launchUrl(url,
       mode: LaunchMode.externalApplication,
