@@ -311,7 +311,14 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                     if (data.githubLink.isNotEmpty)
                       GestureDetector(
                         onTap: () => openUrl(data.githubLink),
-                        child: const FaIcon(FontAwesomeIcons.github),
+                        child: Image.asset(
+                          "assets/ic_github.png",
+                          color: AppColors.appWhiteColor,
+                          width: Responsive.isMobile(context)
+                              ? Responsive.scale(context, min: 10, max: 24) : 20,
+                          height: Responsive.isMobile(context)
+                              ? Responsive.scale(context, min: 10, max: 24) : 20,
+                        ),
                       ),
 
                     if (data.githubLink.isNotEmpty &&
