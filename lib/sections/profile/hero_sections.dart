@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
 import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 import 'package:krunal_portfolio/core/utils/helper/social_link_helper.dart';
@@ -224,25 +223,25 @@ class HeroSections extends StatelessWidget {
               //  LinkedIn
               GestureDetector(
                 onTap: () => openLinkedIn(),
-                child: SocialMediaTagView(icons: FontAwesomeIcons.linkedinIn,),
+                child: SocialMediaTagView(icons: "assets/ic_github.png",),
               ),
 
               //  Github
               GestureDetector(
                 onTap: () => openGithub(),
-                child: SocialMediaTagView(icons: FontAwesomeIcons.github,),
+                child: SocialMediaTagView(icons: "assets/ic_linkedin.png",),
               ),
 
               //  Email
               GestureDetector(
                 onTap: () => sendEmail(),
-                child: SocialMediaTagView(icons: Icons.email_outlined,),
+                child: SocialMediaTagView(icons: "assets/ic_mail.png",),
               ),
 
               //  Phone
               GestureDetector(
                 onTap: () => callPhone(),
-                child: SocialMediaTagView(icons: Icons.phone,),
+                child: SocialMediaTagView(icons: "assets/ic_phone_call.png",),
               ),
             ],
           ),
@@ -324,8 +323,8 @@ class HeroSections extends StatelessWidget {
 
   //  Download Resume
   Future<void> downloadResume() async {
-    final url = Uri.parse("https://drive.google.com/file/d/1EPlNMAY4fA11I2fWseoKuIQ7YivfPlhG/view?usp=sharing");
-    // final url = Uri.parse("https://drive.google.com/file/d/1EPlNMAY4fA11I2fWseoKuIQ7YivfPlhG/view?usp=drive_link");
+    final url = Uri.parse("https://drive.google.com/file/d/1ngGXXIvvlZEB7IvU7j_tX3P4fk-D9HKQ/view?usp=sharing");
+    // final url = Uri.parse("https://drive.google.com/file/d/1EPlNMAY4fA11I2fWseoKuIQ7YivfPlhG/view?usp=sharing");
 
     if (!await launchUrl(url,
       mode: LaunchMode.externalApplication,

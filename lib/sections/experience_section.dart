@@ -26,7 +26,7 @@ class ExperienceSection extends StatelessWidget {
       "present_year": "August 2020 – May 2023",
       "location": "India, Surat",
       "experience": [
-        "Designed and developed native iOS applications using Swift, SwiftUI, and MVVM for product-based and client projects.",
+        "Designed and developed native iOS applications using Swift, SwiftUI,and MVVM for product-based and client projects.",
         "Collaborated directly with clients on requirement analysis, project estimation, and solution delivery while working in a team of 4–5 developers.",
         "Led and managed multiple projects simultaneously, and Implemented REST APIs, Firebase, GraphQL, payment gateways, push notifications, Libre2 sensor integration, and Core Data/Realm.",
         "Performed code reviews, technical research, performance optimization, and provided technical support.",
@@ -52,7 +52,7 @@ class ExperienceSection extends StatelessWidget {
       "present_year": "November 2017 – February 2018",
       "location": "India, Surat",
       "experience": [
-        "Started my iOS development journey by building a strong foundation in Swift, Apple design principles, and application architecture. ",
+        "I Started my iOS development journey by building a strong foundation in Swift, Apple design principles, and application architecture. ",
         "Learned to create user-friendly interfaces, integrate APIs, and structure scalable iOS projects with clean coding practices.",
       ],
       "used_languages": ["Swift", "UIKit", "MVC", "Alamofire"],

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
 import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 
 class SocialMediaTagView extends StatelessWidget {
-  final IconData icons;
+  final String icons;
   const SocialMediaTagView({super.key, required this.icons});
 
   @override
@@ -23,13 +22,19 @@ class SocialMediaTagView extends StatelessWidget {
           Responsive.scale(context, min: 5, max: 10),
         ),
       ),
-      child: FaIcon(
+      child: Image.asset(
         icons,
         color: AppColors.appWhiteColor,
-        size: Responsive.isMobile(context)
-            ? Responsive.scale(context, min: 4, max: 25)
-            : 18,
+        width: Responsive.isMobile(context) ? Responsive.scale(context, min: 4, max: 25) : 18,
+        height: Responsive.isMobile(context) ? Responsive.scale(context, min: 4, max: 25) : 18,
       ),
+      // Icon(
+      //   icons,
+      //   color: AppColors.appWhiteColor,
+      //   size: Responsive.isMobile(context)
+      //       ? Responsive.scale(context, min: 4, max: 25)
+      //       : 18,
+      // ),
     );
   }
 }

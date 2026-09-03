@@ -38,7 +38,7 @@ dependencies:
   url_launcher:
 
   # Icons
-  font_awesome_flutter: ^10.7.0
+  font_awesome_flutter: ^11.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -72,6 +72,10 @@ flutter:
     - assets/ic_appstore.jpeg
     - assets/ic_playstore.jpeg
     - assets/ic_address_pin.jpeg
+    - assets/ic_github.png
+    - assets/ic_linkedin.png
+    - assets/ic_phone_call.png
+    - assets/ic_mail.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

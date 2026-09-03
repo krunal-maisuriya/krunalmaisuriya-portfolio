@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:krunal_portfolio/config/theme/app_colors.dart';
 import 'package:krunal_portfolio/core/utils/helper/responsive.dart';
 import 'package:krunal_portfolio/core/utils/helper/social_link_helper.dart';
@@ -152,7 +151,7 @@ class ContactSection extends StatelessWidget {
                     Flexible(
                       child: GestureDetector(
                         onTap: () => openLinkedIn(),
-                        child: socialContactLink(context, "LinkedIn", FontAwesomeIcons.linkedinIn),
+                        child: socialContactLink(context, "LinkedIn", "assets/ic_linkedin.png"),
                       ),
                     ),
 
@@ -160,7 +159,7 @@ class ContactSection extends StatelessWidget {
                     Flexible(
                       child: GestureDetector(
                         onTap: () => openGithub(),
-                        child: socialContactLink(context, "Github", FontAwesomeIcons.github),
+                        child: socialContactLink(context, "Github", "assets/ic_github.png"),
                       ),
                     ),
                     Spacer(),
@@ -240,13 +239,13 @@ class ContactSection extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () => openLinkedIn(),
-                    child: socialContactLink(context, "LinkedIn", FontAwesomeIcons.linkedinIn),
+                    child: socialContactLink(context, "LinkedIn", "assets/ic_linkedin.png"),
                   ),
 
                   //  Github
                   GestureDetector(
                     onTap: () => openGithub(),
-                    child: socialContactLink(context, "Github", FontAwesomeIcons.github),
+                    child: socialContactLink(context, "Github", "assets/ic_github.png"),
                   ),
                 ],
               ),
@@ -369,7 +368,7 @@ class ContactSection extends StatelessWidget {
   }
 
   ///  Contact Link
-  Widget socialContactLink(BuildContext context, String title, IconData icon) {
+  Widget socialContactLink(BuildContext context, String title, String icon) {
     return Container(
       alignment: Alignment.center,
       width: double.infinity,
@@ -386,12 +385,18 @@ class ContactSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          FaIcon(
+          Image.asset(
             icon,
             color: AppColors.lightWhiteColor,
-            size: Responsive.isMobile(context)
-                ? Responsive.scale(context, min: 7, max: 18) : 18,
+            width: Responsive.isMobile(context) ? Responsive.scale(context, min: 7, max: 18) : 18,
+            height: Responsive.isMobile(context) ? Responsive.scale(context, min: 7, max: 18) : 18,
           ),
+          // FaIcon(
+          //   icon,
+          //   color: AppColors.lightWhiteColor,
+          //   size: Responsive.isMobile(context)
+          //       ? Responsive.scale(context, min: 7, max: 18) : 18,
+          // ),
 
           SizedBox(width: Responsive.isMobile(context)
               ? Responsive.scale(context, min: 2, max: 12) : 10,
