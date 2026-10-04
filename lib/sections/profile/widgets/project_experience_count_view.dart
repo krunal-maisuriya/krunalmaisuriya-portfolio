@@ -25,7 +25,7 @@ class ProjectExperienceCountView extends StatelessWidget {
           duration: const Duration(seconds: 2),
           builder: (context, value, child) {
             return AppLabelTextView(
-              "$value+",
+              title == "MAJOR PROJECTS" ? "$value+" : "$value",
               fontSize: valueFont,
               fontWeight: FontWeight.w900,
               textColor: AppColors.cyanColor.shade800,

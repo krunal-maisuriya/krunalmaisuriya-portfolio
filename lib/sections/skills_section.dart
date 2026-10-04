@@ -16,27 +16,35 @@ class _SkillsSectionState extends State<SkillsSection> {
   final List<Map<String, dynamic>> skillsData = [
     {
       "title": "Mobile Development",
-      "skills": ["iOS", "Swift", "SwiftUI", "Flutter", "Dart"]
+      "skills": ["iOS", "UIKit", "Swift", "SwiftUI", "Flutter", "Dart"]
     },
     {
       "title": "Architecture & Design Patterns",
-      "skills": ["MVVM", "MVC", "Clean Architecture", "Combine"]
+      "skills": ["MVVM", "MVC", "Clean Architecture"]
     },
     {
       "title": "Backend & APIs",
-      "skills": ["Firebase Firestore", "URL Session", "RESTful APIs", "JSON Parsing"]
+      "skills": ["URLSession", "REST APIs", "GraphQL", "JSON Parsing", "Dio", "Alamofire", "Socket.IO"]
     },
     {
-      "title": "Platforms & Tools",
-      "skills": ["Xcode", "Android Studio", "GitHub", "SourceTree", "CocoaPods", "Dependencies", "Postman", "Figma", "Jira"]
+      "title": "Database & Storage",
+      "skills": ["Firebase", "Firebase Firestore", "Firebase Realtime Database", "Core Data", "Realm", "SQLite"]
     },
     {
       "title": "Frameworks & Libraries",
-      "skills": ["Firebase", "Provider", "Riverpod", "Alamofire", "Kingfisher", "SDWebImage", "MapKit", "Google Maps"]
+      "skills": ["Provider", "Riverpod", "Combine", "Kingfisher", "SDWebImage", "MapKit", "Google Maps SDK", "Charts"]
     },
     {
       "title": "Payments",
       "skills": ["Stripe", "Apple Pay", "In-App Purchases", "Subscriptions", "PayPal", "PayUmoney"]
+    },
+    {
+      "title": "Platforms & Tools",
+      "skills": ["Xcode", "Android Studio", "Git", "GitHub", "Bitbucket", "SourceTree", "SPM", "CocoaPods", "Postman", "Figma", "Jira"]
+    },
+    {
+      "title": "Hardware & Mobile Integrations",
+      "skills": ["BLE", "NFC", "Libre2 Sensor Activation", "Deep Linking", "App Clips"]
     },
   ];
 

@@ -136,7 +136,7 @@ class HeroSections extends StatelessWidget {
             spacing: 7,
             children: [
               AppLabelTextView(
-                "As a Senior iOS & Flutter App Developer based in Dubai with 8+ years of experience building high-quality native and cross-platform mobile applications. ",
+                "Senior iOS & Flutter App Developer based in Dubai with 9 years of professional experience building high-quality native and cross-platform mobile applications.",
                 fontSize: Responsive.isMobile(context)
                     ? Responsive.scale(context, min: 11, max: 20)
                     : 14.5,
@@ -144,7 +144,7 @@ class HeroSections extends StatelessWidget {
                 textColor: AppColors.appWhiteColor.withValues(alpha: 0.65),
               ),
               AppLabelTextView(
-                "Specialized in Swift, SwiftUI, Flutter, Firebase, and modern mobile architectures, creating scalable, high-performance, and user-focused digital experiences. ",
+                "Specialized in Swift, SwiftUI, Flutter, Dart, Firebase, and modern mobile architectures, with a strong focus on developing scalable, high-performance, and user-focused mobile solutions.",
                 fontSize: Responsive.isMobile(context)
                     ? Responsive.scale(context, min: 11, max: 20)
                     : 14.5,
@@ -152,7 +152,7 @@ class HeroSections extends StatelessWidget {
                 textColor: AppColors.appWhiteColor.withValues(alpha: 0.65),
               ),
               AppLabelTextView(
-                  "Published 12+ apps on the App Store across E-commerce, Real Estate, Sports, Utilities, Business, and Health & Fitness domains.",
+                  "Successfully published 12+ applications on the App Store across E-commerce, Real-estate, Sports, Utilities, Business, and Health & Fitness domains.",
                 fontSize: Responsive.isMobile(context)
                     ? Responsive.scale(context, min: 11, max: 20)
                     : 14.5,
@@ -253,7 +253,7 @@ class HeroSections extends StatelessWidget {
               ? MainAxisAlignment.start
               : MainAxisAlignment.center,
           children: [
-            _experienceProjectView(context, value: 8, title: "YEAR OF EXPERIENCE"),
+            _experienceProjectView(context, value: 9, title: "YEARS OF EXPERIENCE"),
 
             Padding(
               padding: EdgeInsets.symmetric(
@@ -324,8 +324,6 @@ class HeroSections extends StatelessWidget {
   //  Download Resume
   Future<void> downloadResume() async {
     final url = Uri.parse("https://drive.google.com/file/d/1BwtW4KRyBY9NjWit1h0kl8zWa-Pk1KbR/view?usp=sharing");
-    // final url = Uri.parse("https://drive.google.com/file/d/1ngGXXIvvlZEB7IvU7j_tX3P4fk-D9HKQ/view?usp=sharing");
-    // final url = Uri.parse("https://drive.google.com/file/d/1EPlNMAY4fA11I2fWseoKuIQ7YivfPlhG/view?usp=sharing");
 
     if (!await launchUrl(url,
       mode: LaunchMode.externalApplication,

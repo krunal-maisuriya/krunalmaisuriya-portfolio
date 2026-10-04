@@ -7,7 +7,7 @@ import 'package:krunal_portfolio/config/theme/app_colors.dart';
 final lightTheme = ThemeData(
   brightness: Brightness.light,
   scaffoldBackgroundColor: AppColors.appScaffoldBackgroundColor,
-  fontFamily: GoogleFonts.lato.toString(),
+  fontFamily: GoogleFonts.lexend.toString(),
   hintColor: AppColors.lightGreyColor,
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.transparent,
@@ -38,7 +38,7 @@ final lightTheme = ThemeData(
 final darkTheme = ThemeData(
   brightness: Brightness.dark,
   scaffoldBackgroundColor: AppColors.appBlackColor,
-  fontFamily: GoogleFonts.lato.toString(),
+  fontFamily: GoogleFonts.lexend.toString(),
   hintColor: AppColors.lightGreyColor,
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.transparent,

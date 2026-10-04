@@ -41,9 +41,7 @@ class AppLabelTextView extends StatelessWidget {
       maxLines: maxLines,
       overflow: overflow,
       textDirection: textDirection,
-      style: GoogleFonts.raleway(
-      // style: GoogleFonts.poppins(
-      // style: GoogleFonts.montserrat(
+      style: GoogleFonts.lexend(
         fontSize: fontSize,
         fontWeight: fontWeight,
         color: textColor,
