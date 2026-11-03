@@ -24,11 +24,11 @@ class _SkillsSectionState extends State<SkillsSection> {
     },
     {
       "title": "Backend & APIs",
-      "skills": ["URLSession", "REST APIs", "GraphQL", "JSON Parsing", "Dio", "Alamofire", "Socket.IO"]
+      "skills": ["URLSession", "REST APIs", "GraphQL", "JSON Parsing", "Dio", "Alamofire", "Swift/Vapor", "Fluent", "Socket.IO"]
     },
     {
       "title": "Database & Storage",
-      "skills": ["Firebase", "Firebase Firestore", "Firebase Realtime Database", "Core Data", "Realm", "SQLite"]
+      "skills": ["Firebase", "Firebase Firestore", "Firebase Realtime Database", "Core Data", "Realm", "SQLite", "PostgreSQL"]
     },
     {
       "title": "Frameworks & Libraries",
